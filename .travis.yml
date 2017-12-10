@@ -1,0 +1,8 @@
+language: java
+script: mvn test -B
+
+jdk:
+  - oraclejdk8
+
+install:
+ - travis_wait
