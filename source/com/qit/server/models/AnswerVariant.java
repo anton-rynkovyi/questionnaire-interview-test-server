@@ -1,4 +1,4 @@
-package com.qit.models;
+package com.qit.server.models;
 
 import javax.persistence.*;
 import java.math.BigInteger;
@@ -8,7 +8,7 @@ import java.math.BigInteger;
 public class AnswerVariant {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "answer_variant_id")
     private BigInteger answerVariantId;
 

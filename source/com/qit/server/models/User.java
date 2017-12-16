@@ -1,24 +1,32 @@
-package com.qit.models;
+package com.qit.server.models;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
 public class User {
 
     @Id
-    @Column(name = "username")
+//    @GeneratedValue(generator = "increment")
+//    @GenericGenerator(name = "increment", strategy = "increment")
+    @Column(name = "username", nullable = false, length = 100, unique = true)
     private String username;
 
-    @Column(name = "password")
+    @Column(name = "password", nullable = false, length = 100)
     private String password;
 
     @Column(name = "enabled")
     private Boolean enabled;
+
+    public User() {}
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 
     public String getUsername() {
         return username;

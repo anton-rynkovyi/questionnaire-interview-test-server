@@ -1,4 +1,4 @@
-package com.qit.models;
+package com.qit.server.models;
 
 import java.math.BigInteger;
 

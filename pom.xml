@@ -5,31 +5,77 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.qit</groupId>
-    <artifactId>qit</artifactId>
+    <artifactId>qit-core</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
 
     <properties>
-        <hibernate-version>5.2.12.Final</hibernate-version>
-        <log4j-version>1.2.17</log4j-version>
+        <spring.version>4.2.2.RELEASE</spring.version>
+        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+        <spring-data-jpa.version>1.9.2.RELEASE</spring-data-jpa.version>
+        <hibernate.version>5.2.12.Final</hibernate.version>
+        <postgresql.version>9.1-901-1.jdbc4</postgresql.version>
+        <commons-dbcp2.version>2.1.1</commons-dbcp2.version>
+        <jackson-databind.version>2.5.3</jackson-databind.version>
+        <log4j.version>1.2.17</log4j.version>
     </properties>
 
+
     <dependencies>
+        <!--Spring-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
 
-        <!--SPRING-->
+        <!-- Web-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${javax.servlet-api.version}</version>
+        </dependency>
 
+        <!-- JSON Converter -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-databind.version}</version>
+        </dependency>
 
-        <!--HIBERNATE-->
+        <!--Database-->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${spring-data-jpa.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>${hibernate-version}</version>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+            <version>${commons-dbcp2.version}</version>
         </dependency>
 
-        <!--LOGGER-->
+        <!--Logger-->
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>${log4j-version}</version>
+            <version>${log4j.version}</version>
         </dependency>
 
     </dependencies>

@@ -1,8 +1,5 @@
-package com.qit.models;
+package com.qit.server.models;
 
-import org.hibernate.annotations.Table;
-
-import javax.persistence.Entity;
 import java.math.BigInteger;
 
 public class QitQuestion {
