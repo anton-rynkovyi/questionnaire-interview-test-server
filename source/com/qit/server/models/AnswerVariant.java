@@ -3,19 +3,19 @@ package com.qit.server.models;
 import javax.persistence.*;
 import java.math.BigInteger;
 
-@Entity
-@Table(name = "answers_variants")
+//@Entity
+//@Table(name = "answers_variants")
 public class AnswerVariant {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "answer_variant_id")
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @Column(name = "answer_variant_id")
     private BigInteger answerVariantId;
 
-    @Column(name = "question_id")
+//    @Column(name = "question_id")
     private BigInteger questionId;
 
-    @Column(name = "answer")
+//    @Column(name = "answer")
     private String answer;
 
     public BigInteger getAnswerVariantId() {

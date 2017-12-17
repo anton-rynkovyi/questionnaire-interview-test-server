@@ -1,37 +1,53 @@
 package com.qit.server.models;
 
-import java.math.BigInteger;
-import java.util.Date;
+import javax.persistence.*;
+import java.sql.Date;
+import java.util.Set;
 
+
+@Entity
+@Table(name = "user_bans")
 public class UserBan {
 
-    private BigInteger userBanId;
-    private BigInteger banOwnerId;
-    private BigInteger bannedUserId;
+    @Id
+    @SequenceGenerator(name = "user_bans_seq", sequenceName = "user_bans_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_bans_seq")
+    @Column(name = "user_ban_id")
+    private Long userBanId;
+
+    private Long banOwnerId;
+
+    private Long bannedUserId;
+
+    private Set<User> bannedUsers;
+
+    @Column(name = "start_date")
     private Date startDate;
+
+    @Column(name = "end_date")
     private Date endDate;
 
-    public BigInteger getUserBanId() {
+    public Long getUserBanId() {
         return userBanId;
     }
 
-    public void setUserBanId(BigInteger userBanId) {
+    public void setUserBanId(Long userBanId) {
         this.userBanId = userBanId;
     }
 
-    public BigInteger getBanOwnerId() {
+    public Long getBanOwnerId() {
         return banOwnerId;
     }
 
-    public void setBanOwnerId(BigInteger banOwnerId) {
+    public void setBanOwnerId(Long banOwnerId) {
         this.banOwnerId = banOwnerId;
     }
 
-    public BigInteger getBannedUserId() {
+    public Long getBannedUserId() {
         return bannedUserId;
     }
 
-    public void setBannedUserId(BigInteger bannedUserId) {
+    public void setBannedUserId(Long bannedUserId) {
         this.bannedUserId = bannedUserId;
     }
 

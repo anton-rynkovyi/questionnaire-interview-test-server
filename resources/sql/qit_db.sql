@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS user_roles CASCADE;
-DROP TABLE IF EXISTS user_datails CASCADE;
+DROP TABLE IF EXISTS user_details CASCADE;
 DROP TABLE IF EXISTS user_bans CASCADE;
 DROP TABLE IF EXISTS quizzes CASCADE;
 DROP TABLE IF EXISTS questionnaire_details CASCADE;
@@ -40,31 +40,31 @@ CREATE TABLE user_roles(
 );
 
 CREATE SEQUENCE user_details_seq;
-CREATE TABLE user_datails(
-  user_datails_id   BIGINT NOT NULL DEFAULT nextval('user_details_seq'),
+CREATE TABLE user_details(
+  user_details_id   BIGINT NOT NULL DEFAULT nextval('user_details_seq'),
          username   VARCHAR(100),
        first_name   VARCHAR(100),
         last_name   VARCHAR(100),
             email   VARCHAR(100) UNIQUE,
-    phone_number	  VARCHAR(40) UNIQUE,
+     phone_number	  VARCHAR(40) UNIQUE,
            gender   BOOLEAN,
       birth_date	  DATE,
   additional_info   TEXT,
-  PRIMARY KEY(user_datails_id),
+  PRIMARY KEY(user_details_id),
   FOREIGN KEY(username) REFERENCES users(username)
 );
 
 
 CREATE SEQUENCE user_bans_seq;
 CREATE TABLE user_bans(
-     user_ban_id   BIGINT NOT NULL DEFAULT nextval('user_bans_seq'),
-    ban_owner_id   VARCHAR(100),
-  banned_user_id	 VARCHAR(100),
-      start_date   TIMESTAMP NOT NULL,
-        end_date   TIMESTAMP,
+           user_ban_id   BIGINT NOT NULL DEFAULT nextval('user_bans_seq'),
+    ban_owner_username   VARCHAR(100),
+  banned_user_username 	 VARCHAR(100),
+            start_date   TIMESTAMP NOT NULL,
+              end_date   TIMESTAMP,
   PRIMARY KEY(user_ban_id),
-  FOREIGN KEY(ban_owner_id) REFERENCES users(username),
-  FOREIGN KEY(banned_user_id) REFERENCES users(username)
+  FOREIGN KEY(ban_owner_username) REFERENCES users(username),
+  FOREIGN KEY(ban_owner_username) REFERENCES users(username)
 );
 
 

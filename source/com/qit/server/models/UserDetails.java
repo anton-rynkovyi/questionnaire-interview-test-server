@@ -1,34 +1,58 @@
 package com.qit.server.models;
 
-import java.math.BigInteger;
-import java.util.Date;
+import javax.persistence.*;
+import java.sql.Date;
 
-public class UserDetails{
+@Entity
+@Table(name = "user_details")
+public class UserDetails {
 
-    private BigInteger userDetailsId;
-    private String username;
+    @Id
+    @SequenceGenerator(name = "user_details_seq", sequenceName = "user_details_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_details_seq")
+    @Column(name = "user_details_id")
+    private Long userDetailsId;
+
+    @OneToOne
+    @JoinColumn(name = "username")
+    private User user;
+
+    @Column(name = "first_name", length = 100)
     private String firstName;
+
+    @Column(name = "last_name", length = 100)
     private String lastName;
+
+    @Column(name = "email", length = 100, unique = true)
     private String email;
+
+    @Column(name = "phone_number", length = 40, unique = true)
     private String phoneNumber;
+
+    @Column(name = "gender")
     private Boolean gender;
+
+    @Column(name = "birth_date")
     private Date birthDate;
+
+    @Column(name = "additional_info")
     private String additionalInfo;
 
-    public BigInteger getUserDetailsId() {
+
+    public Long getUserDetailsId() {
         return userDetailsId;
     }
 
-    public void setUserDetailsId(BigInteger userDetailsId) {
+    public void setUserDetailsId(Long userDetailsId) {
         this.userDetailsId = userDetailsId;
     }
 
-    public String getUsername() {
-        return username;
+    public User getUser() {
+        return user;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getFirstName() {
@@ -63,11 +87,11 @@ public class UserDetails{
         this.phoneNumber = phoneNumber;
     }
 
-    public boolean isGender() {
+    public Boolean getGender() {
         return gender;
     }
 
-    public void setGender(boolean gender) {
+    public void setGender(Boolean gender) {
         this.gender = gender;
     }
 
@@ -87,18 +111,5 @@ public class UserDetails{
         this.additionalInfo = additionalInfo;
     }
 
-    @Override
-    public String toString() {
-        return "UserDetails{" +
-                "userDetailsId=" + userDetailsId +
-                ", username='" + username + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", gender=" + gender +
-                ", birthDate=" + birthDate +
-                ", additionalInfo='" + additionalInfo + '\'' +
-                '}';
-    }
+
 }

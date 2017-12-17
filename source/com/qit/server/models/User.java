@@ -1,17 +1,14 @@
 package com.qit.server.models;
 
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
 public class User {
 
     @Id
-//    @GeneratedValue(generator = "increment")
-//    @GenericGenerator(name = "increment", strategy = "increment")
     @Column(name = "username", nullable = false, length = 100, unique = true)
     private String username;
 
@@ -21,9 +18,21 @@ public class User {
     @Column(name = "enabled")
     private Boolean enabled;
 
-    public User() {}
+    @OneToMany(mappedBy = "user", targetEntity = UserRole.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<UserRole> userRoles;
+
+    @OneToOne(mappedBy = "user", targetEntity = UserDetails.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private UserDetails userDetails;
+
+
+    private UserBan userBan;
+
+    public User() {
+        this.enabled = true;
+    }
 
     public User(String username, String password) {
+        this();
         this.username = username;
         this.password = password;
     }
@@ -44,14 +53,29 @@ public class User {
         this.password = password;
     }
 
-    public boolean isEnabled() {
+    public Boolean getEnabled() {
         return enabled;
     }
 
-    public void setEnabled(boolean enabled) {
+    public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
     }
 
+    public Set<UserRole> getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(Set<UserRole> userRoles) {
+        this.userRoles = userRoles;
+    }
+
+    public UserDetails getUserDetails() {
+        return userDetails;
+    }
+
+    public void setUserDetails(UserDetails userDetails) {
+        this.userDetails = userDetails;
+    }
 
     @Override
     public String toString() {
