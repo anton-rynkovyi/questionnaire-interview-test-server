@@ -1,29 +1,44 @@
 package com.qit.server.models;
 
-import java.math.BigInteger;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "interview_details")
 public class InterviewDetails {
 
-    private BigInteger interviewId;
-    private BigInteger quizId;
+    @Id
+    @SequenceGenerator(name = "interview_details_seq", sequenceName = "interview_details_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "interview_details_seq")
+    @Column(name = "interview_id")
+    private Long interviewId;
+
+    @OneToOne
+    @JoinColumn(name = "quiz_id")
+    private Quiz quiz;
+
+    @Column(name = "members_limit")
     private Integer membersLimit;
+
+    @Column(name = "password")
     private String password;
+
+    @Column(name = "res_visibility")
     private Boolean resultVisibility;
 
-    public BigInteger getInterviewId() {
+    public Long getInterviewId() {
         return interviewId;
     }
 
-    public void setInterviewId(BigInteger interviewId) {
+    public void setInterviewId(Long interviewId) {
         this.interviewId = interviewId;
     }
 
-    public BigInteger getQuizId() {
-        return quizId;
+    public Quiz getQuiz() {
+        return quiz;
     }
 
-    public void setQuizId(BigInteger quizId) {
-        this.quizId = quizId;
+    public void setQuiz(Quiz quiz) {
+        this.quiz = quiz;
     }
 
     public Integer getMembersLimit() {
@@ -54,7 +69,6 @@ public class InterviewDetails {
     public String toString() {
         return "InterviewDetails{" +
                 "interviewId=" + interviewId +
-                ", quizId=" + quizId +
                 ", membersLimit=" + membersLimit +
                 ", password='" + password + '\'' +
                 ", resultVisibility=" + resultVisibility +

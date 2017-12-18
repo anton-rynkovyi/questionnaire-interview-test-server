@@ -33,21 +33,20 @@ public class QitController {
     public String getQit() {
 
         User user = new User("Edik", "qwerty");
+
         Set<UserRole> userRoles = new HashSet<UserRole>();
-//        userRoles.add(new UserRole(user,"ADMIN"));
-//        userRoles.add(new UserRole(user,"MODERATOR"));
         userRoles.add(new UserRole("ADMIN"));
         userRoles.add(new UserRole("MODERATOR"));
-        user.setUserRoles(userRoles);
-
-        userRepository.save(user);
-//        userRoleRepository.save(userRoles);
+        user.addUserRoles(userRoles);
 
         UserDetails edikDetails = new UserDetails();
         edikDetails.setEmail("edik@gmail.com");
         edikDetails.setFirstName("Edik");
         edikDetails.setLastName("Belchik");
         edikDetails.setBirthDate(new java.sql.Date(System.currentTimeMillis()));
+        user.addUserDetailss(edikDetails);
+
+        userRepository.save(user);
 
         return userRepository.findOne("Edik").toString();
     }

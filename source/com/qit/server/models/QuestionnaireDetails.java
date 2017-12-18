@@ -1,49 +1,65 @@
 package com.qit.server.models;
 
-import java.math.BigInteger;
-import java.util.Date;
+import javax.persistence.*;
+import java.sql.Timestamp;
 
+
+@Entity
+@Table(name = "questionnaire_details")
 public class QuestionnaireDetails {
 
-    private BigInteger questionnaireId;
-    private BigInteger quizId;
-    private Date startDate;
-    private Date endDate;
+    @Id
+    @SequenceGenerator(name = "questionnaire_details_seq", sequenceName = "questionnaire_details_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "questionnaire_details_seq")
+    @Column(name = "quest_id")
+    private Long questionnaireId;
+
+    @Column(name = "start_date")
+    private Timestamp startDate;
+
+    @Column(name = "end_date")
+    private Timestamp endDate;
+
+    @Column(name = "answers_limit")
     private Integer answerLimit;
+
+    @Column(name = "password")
     private String password;
+
+    @Column(name = "vote")
     private Boolean vote;
+
+    @Column(name = "anonymity")
     private Boolean anonymity;
+
+    @Column(name = "res_visibility")
     private Boolean resultVisibility;
 
-    public BigInteger getQuestionnaireId() {
+    @OneToOne
+    @JoinColumn(name = "quiz_id")
+    private Quiz quiz;
+
+    public Long getQuestionnaireId() {
         return questionnaireId;
     }
 
-    public void setQuestionnaireId(BigInteger questionnaireId) {
+    public void setQuestionnaireId(Long questionnaireId) {
         this.questionnaireId = questionnaireId;
     }
 
-    public BigInteger getQuizId() {
-        return quizId;
-    }
-
-    public void setQuizId(BigInteger quizId) {
-        this.quizId = quizId;
-    }
-
-    public Date getStartDate() {
+    public Timestamp getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(Timestamp startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public Timestamp getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(Timestamp endDate) {
         this.endDate = endDate;
     }
 
@@ -87,11 +103,18 @@ public class QuestionnaireDetails {
         this.resultVisibility = resultVisibility;
     }
 
+    public Quiz getQuiz() {
+        return quiz;
+    }
+
+    public void setQuiz(Quiz quiz) {
+        this.quiz = quiz;
+    }
+
     @Override
     public String toString() {
         return "QuestionnaireDetails{" +
                 "questionnaireId=" + questionnaireId +
-                ", quizId=" + quizId +
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
                 ", answerLimit=" + answerLimit +

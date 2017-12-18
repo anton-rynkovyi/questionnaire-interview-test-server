@@ -1,28 +1,42 @@
 package com.qit.server.models;
 
+import javax.persistence.*;
 import java.math.BigInteger;
 
+@Entity
+@Table(name = "answers")
 public class QitAnswer {
 
-    private BigInteger answerId;
-    private BigInteger questionId;
+    @Id
+    @SequenceGenerator(name = "answers_seq", sequenceName = "answers_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "answers_seq")
+    @Column(name = "answer_id")
+    private Long answerId;
+
+    @ManyToOne
+    @JoinColumn(name = "question_id")
+    private QitQuestion qitQuestion;
+
+    @Column(name = "respondent_username")
     private String respondentUsername;
+
+    @Column(name = "answer")
     private String answer;
 
-    public BigInteger getAnswerId() {
+    public Long getAnswerId() {
         return answerId;
     }
 
-    public void setAnswerId(BigInteger answerId) {
+    public void setAnswerId(Long answerId) {
         this.answerId = answerId;
     }
 
-    public BigInteger getQuestionId() {
-        return questionId;
+    public QitQuestion getQitQuestion() {
+        return qitQuestion;
     }
 
-    public void setQuestionId(BigInteger questionId) {
-        this.questionId = questionId;
+    public void setQitQuestion(QitQuestion qitQuestion) {
+        this.qitQuestion = qitQuestion;
     }
 
     public String getRespondentUsername() {
@@ -45,7 +59,6 @@ public class QitAnswer {
     public String toString() {
         return "QitAnswer{" +
                 "answerId=" + answerId +
-                ", questionId=" + questionId +
                 ", respondentUsername='" + respondentUsername + '\'' +
                 ", answer='" + answer + '\'' +
                 '}';

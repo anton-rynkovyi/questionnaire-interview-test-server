@@ -1,8 +1,7 @@
 package com.qit.server.models;
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.util.Set;
+import java.sql.Timestamp;
 
 
 @Entity
@@ -15,17 +14,17 @@ public class UserBan {
     @Column(name = "user_ban_id")
     private Long userBanId;
 
-    private Long banOwnerId;
+    @Column(name = "ban_owner_username")
+    private String banOwnerUsername;
 
-    private Long bannedUserId;
-
-    private Set<User> bannedUsers;
+    @Column(name = "banned_user_username")
+    private String bannedUserUsername;
 
     @Column(name = "start_date")
-    private Date startDate;
+    private Timestamp startDate;
 
     @Column(name = "end_date")
-    private Date endDate;
+    private Timestamp endDate;
 
     public Long getUserBanId() {
         return userBanId;
@@ -35,35 +34,35 @@ public class UserBan {
         this.userBanId = userBanId;
     }
 
-    public Long getBanOwnerId() {
-        return banOwnerId;
+    public String getBanOwnerUsername() {
+        return banOwnerUsername;
     }
 
-    public void setBanOwnerId(Long banOwnerId) {
-        this.banOwnerId = banOwnerId;
+    public void setBanOwnerUsername(String banOwnerUsername) {
+        this.banOwnerUsername = banOwnerUsername;
     }
 
-    public Long getBannedUserId() {
-        return bannedUserId;
+    public String getBannedUserUsername() {
+        return bannedUserUsername;
     }
 
-    public void setBannedUserId(Long bannedUserId) {
-        this.bannedUserId = bannedUserId;
+    public void setBannedUserUsername(String bannedUserUsername) {
+        this.bannedUserUsername = bannedUserUsername;
     }
 
-    public Date getStartDate() {
+    public Timestamp getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(Timestamp startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public Timestamp getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(Timestamp endDate) {
         this.endDate = endDate;
     }
 
@@ -71,8 +70,8 @@ public class UserBan {
     public String toString() {
         return "UserBan{" +
                 "userBanId=" + userBanId +
-                ", banOwnerId=" + banOwnerId +
-                ", bannedUserId=" + bannedUserId +
+                ", banOwnerUsername='" + banOwnerUsername + '\'' +
+                ", bannedUserUsername='" + bannedUserUsername + '\'' +
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
                 '}';

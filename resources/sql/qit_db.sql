@@ -62,9 +62,7 @@ CREATE TABLE user_bans(
   banned_user_username 	 VARCHAR(100),
             start_date   TIMESTAMP NOT NULL,
               end_date   TIMESTAMP,
-  PRIMARY KEY(user_ban_id),
-  FOREIGN KEY(ban_owner_username) REFERENCES users(username),
-  FOREIGN KEY(ban_owner_username) REFERENCES users(username)
+  PRIMARY KEY(user_ban_id)
 );
 
 

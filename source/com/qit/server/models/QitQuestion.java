@@ -1,29 +1,49 @@
 package com.qit.server.models;
 
+import javax.persistence.*;
 import java.math.BigInteger;
+import java.util.Set;
 
+@Entity
+@Table(name = "questions")
 public class QitQuestion {
 
-    private BigInteger questionId;
-    private BigInteger quizId;
+    @Id
+    @SequenceGenerator(name = "questions_seq", sequenceName = "questions_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "questions_seq")
+    @Column(name = "question_id")
+    private Long questionId;
+
+    @ManyToOne
+    @JoinColumn(name = "quiz_id")
+    private Quiz quiz;
+
+    @Column(name = "summary")
     private String summary;
+
+    @Column(name = "sequence")
     private Integer sequence;
 
+    @OneToMany(mappedBy = "qitQuestion", targetEntity = QitAnswer.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<QitAnswer> qitAnswers;
 
-    public BigInteger getQuestionId() {
+    @OneToMany(mappedBy = "qitQuestion", targetEntity = AnswerVariant.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<AnswerVariant> answerVariants;
+
+    public Long getQuestionId() {
         return questionId;
     }
 
-    public void setQuestionId(BigInteger questionId) {
+    public void setQuestionId(Long questionId) {
         this.questionId = questionId;
     }
 
-    public BigInteger getQuizId() {
-        return quizId;
+    public Quiz getQuiz() {
+        return quiz;
     }
 
-    public void setQuizId(BigInteger quizId) {
-        this.quizId = quizId;
+    public void setQuiz(Quiz quiz) {
+        this.quiz = quiz;
     }
 
     public String getSummary() {
@@ -46,7 +66,6 @@ public class QitQuestion {
     public String toString() {
         return "QitQuestion{" +
                 "questionId=" + questionId +
-                ", quizId=" + quizId +
                 ", summary='" + summary + '\'' +
                 ", sequence=" + sequence +
                 '}';

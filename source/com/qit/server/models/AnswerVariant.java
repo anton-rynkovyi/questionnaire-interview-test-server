@@ -3,35 +3,37 @@ package com.qit.server.models;
 import javax.persistence.*;
 import java.math.BigInteger;
 
-//@Entity
-//@Table(name = "answers_variants")
+@Entity
+@Table(name = "answers_variants")
 public class AnswerVariant {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//    @Column(name = "answer_variant_id")
-    private BigInteger answerVariantId;
+    @Id
+    @SequenceGenerator(name = "answers_variants_seq", sequenceName = "answers_variants_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "answers_variants_seq")
+    @Column(name = "answer_variant_id")
+    private Long answerVariantId;
 
-//    @Column(name = "question_id")
-    private BigInteger questionId;
+    @ManyToOne
+    @JoinColumn(name = "question_id")
+    private QitQuestion qitQuestion;
 
-//    @Column(name = "answer")
+    @Column(name = "answer")
     private String answer;
 
-    public BigInteger getAnswerVariantId() {
+    public Long getAnswerVariantId() {
         return answerVariantId;
     }
 
-    public void setAnswerVariantId(BigInteger answerVariantId) {
+    public void setAnswerVariantId(Long answerVariantId) {
         this.answerVariantId = answerVariantId;
     }
 
-    public BigInteger getQuestionId() {
-        return questionId;
+    public QitQuestion getQitQuestion() {
+        return qitQuestion;
     }
 
-    public void setQuestionId(BigInteger questionId) {
-        this.questionId = questionId;
+    public void setQitQuestion(QitQuestion qitQuestion) {
+        this.qitQuestion = qitQuestion;
     }
 
     public String getAnswer() {
@@ -46,7 +48,6 @@ public class AnswerVariant {
     public String toString() {
         return "AnswerVariant{" +
                 "answerVariantId=" + answerVariantId +
-                ", questionId=" + questionId +
                 ", answer='" + answer + '\'' +
                 '}';
     }

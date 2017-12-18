@@ -2,6 +2,7 @@ package com.qit.server.models;
 
 
 import javax.persistence.*;
+import java.util.Collections;
 import java.util.Set;
 
 @Entity
@@ -24,8 +25,21 @@ public class User {
     @OneToOne(mappedBy = "user", targetEntity = UserDetails.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private UserDetails userDetails;
 
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "quizzes_users",
+            joinColumns = @JoinColumn(name = "username"),
+            inverseJoinColumns = @JoinColumn(name = "quiz_id")
+    )
+    private Set<Quiz> quizzes;
 
-    private UserBan userBan;
+    public Set<Quiz> getQuizzes() {
+        return quizzes;
+    }
+
+    public void setQuizzes(Set<Quiz> quizzes) {
+        this.quizzes = quizzes;
+    }
 
     public User() {
         this.enabled = true;
@@ -69,12 +83,26 @@ public class User {
         this.userRoles = userRoles;
     }
 
+    @Deprecated
+    public void addUserRoles(Set<UserRole> userRoles) {
+        setUserRoles(userRoles);
+        for (UserRole ur : userRoles) {
+            ur.setUser(this);
+        }
+    }
+
     public UserDetails getUserDetails() {
         return userDetails;
     }
 
     public void setUserDetails(UserDetails userDetails) {
         this.userDetails = userDetails;
+    }
+
+    @Deprecated
+    public void addUserDetailss(UserDetails userDetails) {
+        setUserDetails(userDetails);
+        userDetails.setUser(this);
     }
 
     @Override
