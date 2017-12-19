@@ -3,14 +3,8 @@ package com.qit.server.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "interview_details")
-public class InterviewDetails {
-
-    @Id
-    @SequenceGenerator(name = "interview_details_seq", sequenceName = "interview_details_seq")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "interview_details_seq")
-    @Column(name = "interview_id")
-    private Long interviewId;
+@Table(name = "interviews")
+public class Interview extends Quiz {
 
     @OneToOne
     @JoinColumn(name = "quiz_id")
@@ -24,14 +18,6 @@ public class InterviewDetails {
 
     @Column(name = "res_visibility")
     private Boolean resultVisibility;
-
-    public Long getInterviewId() {
-        return interviewId;
-    }
-
-    public void setInterviewId(Long interviewId) {
-        this.interviewId = interviewId;
-    }
 
     public Quiz getQuiz() {
         return quiz;
@@ -57,21 +43,22 @@ public class InterviewDetails {
         this.password = password;
     }
 
-    public boolean isResultVisibility() {
+    public Boolean getResultVisibility() {
         return resultVisibility;
     }
 
-    public void setResultVisibility(boolean resultVisibility) {
+    public void setResultVisibility(Boolean resultVisibility) {
         this.resultVisibility = resultVisibility;
     }
 
     @Override
     public String toString() {
-        return "InterviewDetails{" +
-                "interviewId=" + interviewId +
+        return "Interview{" +
+                "quiz=" + quiz +
                 ", membersLimit=" + membersLimit +
                 ", password='" + password + '\'' +
                 ", resultVisibility=" + resultVisibility +
                 '}';
     }
 }
+

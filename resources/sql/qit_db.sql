@@ -3,9 +3,9 @@ DROP TABLE IF EXISTS user_roles CASCADE;
 DROP TABLE IF EXISTS user_details CASCADE;
 DROP TABLE IF EXISTS user_bans CASCADE;
 DROP TABLE IF EXISTS quizzes CASCADE;
-DROP TABLE IF EXISTS questionnaire_details CASCADE;
-DROP TABLE IF EXISTS interview_details CASCADE;
-DROP TABLE IF EXISTS test_details CASCADE;
+DROP TABLE IF EXISTS questionnaires CASCADE;
+DROP TABLE IF EXISTS interviews CASCADE;
+DROP TABLE IF EXISTS tests CASCADE;
 DROP TABLE IF EXISTS questions CASCADE;
 DROP TABLE IF EXISTS answers_variants CASCADE;
 DROP TABLE IF EXISTS answers CASCADE;
@@ -15,9 +15,9 @@ DROP SEQUENCE IF EXISTS user_role_seq CASCADE;
 DROP SEQUENCE IF EXISTS user_details_seq CASCADE;
 DROP SEQUENCE IF EXISTS user_bans_seq CASCADE;
 DROP SEQUENCE IF EXISTS quizzes_seq CASCADE;
-DROP SEQUENCE IF EXISTS questionnaire_details_seq CASCADE;
-DROP SEQUENCE IF EXISTS interview_details_seq CASCADE;
-DROP SEQUENCE IF EXISTS test_details_seq CASCADE;
+DROP SEQUENCE IF EXISTS questionnaires_seq CASCADE;
+DROP SEQUENCE IF EXISTS interviews_seq CASCADE;
+DROP SEQUENCE IF EXISTS tests_seq CASCADE;
 DROP SEQUENCE IF EXISTS questions_seq CASCADE;
 DROP SEQUENCE IF EXISTS answers_variants_seq CASCADE;
 DROP SEQUENCE IF EXISTS answers_seq CASCADE;
@@ -77,9 +77,9 @@ CREATE TABLE quizzes(
 );
 
 
-CREATE SEQUENCE questionnaire_details_seq;
-CREATE TABLE questionnaire_details(
-        quest_id   BIGINT NOT NULL DEFAULT nextval('questionnaire_details_seq'),
+CREATE SEQUENCE questionnaires_seq;
+CREATE TABLE questionnaires(
+        quest_id   BIGINT NOT NULL DEFAULT nextval('questionnaires_seq'),
          quiz_id   BIGINT,
       start_date   TIMESTAMP NOT NULL,
         end_date   TIMESTAMP,
@@ -93,9 +93,9 @@ CREATE TABLE questionnaire_details(
 );
 
 
-CREATE SEQUENCE interview_details_seq;
-CREATE TABLE interview_details(
-    interview_id   BIGINT NOT NULL DEFAULT nextval('interview_details_seq'),
+CREATE SEQUENCE interviews_seq;
+CREATE TABLE interviews(
+    interview_id   BIGINT NOT NULL DEFAULT nextval('interviews_seq'),
          quiz_id   BIGINT,
    members_limit   INTEGER,
         password   VARCHAR(30),
@@ -105,9 +105,9 @@ CREATE TABLE interview_details(
 );
 
 
-CREATE SEQUENCE test_details_seq;
-CREATE TABLE test_details(
-  test_id   BIGINT NOT NULL DEFAULT nextval('test_details_seq'),
+CREATE SEQUENCE tests_seq;
+CREATE TABLE tests(
+  test_id   BIGINT NOT NULL DEFAULT nextval('tests_seq'),
   quiz_id   BIGINT,
   PRIMARY KEY(test_id),
   FOREIGN KEY(quiz_id) REFERENCES quizzes(quiz_id)

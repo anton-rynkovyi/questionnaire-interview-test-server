@@ -5,6 +5,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "quizzes")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Quiz {
 
     @Id
@@ -13,29 +14,19 @@ public class Quiz {
     @Column(name = "quiz_id")
     private Long quizId;
 
-    @Column(name = "username")
-    private String username;
-
     @Column(name = "title")
     private String title;
 
     @Column(name = "topic")
     private String topic;
 
-    @ManyToMany(mappedBy = "quizzes")
-    private Set<User> users;
+    @ManyToOne
+    @JoinColumn(name = "username")
+    private User owner;
 
-    @OneToOne(mappedBy = "quiz", targetEntity = QuestionnaireDetails.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private QuestionnaireDetails questionnaireDetails;
+    @ManyToMany(targetEntity = User.class, mappedBy = "quizzes")
+    private Set<User> participants;
 
-    @OneToOne(mappedBy = "quiz", targetEntity = InterviewDetails.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private InterviewDetails interviewDetails;
-
-    @OneToOne(mappedBy = "quiz", targetEntity = TestDetails.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private TestDetails testDetails;
-
-    @OneToMany(mappedBy = "quiz", targetEntity = QitQuestion.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<QitQuestion> qitQuestions;
 
     public Long getQuizId() {
         return quizId;
@@ -43,14 +34,6 @@ public class Quiz {
 
     public void setQuizId(Long quizId) {
         this.quizId = quizId;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getTitle() {
@@ -69,11 +52,26 @@ public class Quiz {
         this.topic = topic;
     }
 
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
+    public Set<User> getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(Set<User> participants) {
+        this.participants = participants;
+    }
+
     @Override
     public String toString() {
         return "Quiz{" +
                 "quizId=" + quizId +
-                ", username='" + username + '\'' +
                 ", title='" + title + '\'' +
                 ", topic='" + topic + '\'' +
                 '}';

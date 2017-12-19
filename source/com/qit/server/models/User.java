@@ -19,6 +19,9 @@ public class User {
     @Column(name = "enabled")
     private Boolean enabled;
 
+    @OneToMany(targetEntity = Quiz.class, mappedBy = "owner")
+    private Set<Quiz> ownedQuizzes;
+
     @OneToMany(mappedBy = "user", targetEntity = UserRole.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<UserRole> userRoles;
 
@@ -81,6 +84,14 @@ public class User {
 
     public void setUserRoles(Set<UserRole> userRoles) {
         this.userRoles = userRoles;
+    }
+
+    public Set<Quiz> getOwnedQuizzes() {
+        return ownedQuizzes;
+    }
+
+    public void setOwnedQuezzes(Set<Quiz> ownedQuizzes) {
+        this.ownedQuizzes = ownedQuizzes;
     }
 
     @Deprecated

@@ -5,14 +5,8 @@ import java.sql.Timestamp;
 
 
 @Entity
-@Table(name = "questionnaire_details")
-public class QuestionnaireDetails {
-
-    @Id
-    @SequenceGenerator(name = "questionnaire_details_seq", sequenceName = "questionnaire_details_seq")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "questionnaire_details_seq")
-    @Column(name = "quest_id")
-    private Long questionnaireId;
+@Table(name = "questionnaires")
+public class Questionnaire extends Quiz {
 
     @Column(name = "start_date")
     private Timestamp startDate;
@@ -34,18 +28,6 @@ public class QuestionnaireDetails {
 
     @Column(name = "res_visibility")
     private Boolean resultVisibility;
-
-    @OneToOne
-    @JoinColumn(name = "quiz_id")
-    private Quiz quiz;
-
-    public Long getQuestionnaireId() {
-        return questionnaireId;
-    }
-
-    public void setQuestionnaireId(Long questionnaireId) {
-        this.questionnaireId = questionnaireId;
-    }
 
     public Timestamp getStartDate() {
         return startDate;
@@ -79,43 +61,34 @@ public class QuestionnaireDetails {
         this.password = password;
     }
 
-    public boolean isVote() {
+    public Boolean getVote() {
         return vote;
     }
 
-    public void setVote(boolean vote) {
+    public void setVote(Boolean vote) {
         this.vote = vote;
     }
 
-    public boolean isAnonymity() {
+    public Boolean getAnonymity() {
         return anonymity;
     }
 
-    public void setAnonymity(boolean anonymity) {
+    public void setAnonymity(Boolean anonymity) {
         this.anonymity = anonymity;
     }
 
-    public boolean isResultVisibility() {
+    public Boolean getResultVisibility() {
         return resultVisibility;
     }
 
-    public void setResultVisibility(boolean resultVisibility) {
+    public void setResultVisibility(Boolean resultVisibility) {
         this.resultVisibility = resultVisibility;
-    }
-
-    public Quiz getQuiz() {
-        return quiz;
-    }
-
-    public void setQuiz(Quiz quiz) {
-        this.quiz = quiz;
     }
 
     @Override
     public String toString() {
-        return "QuestionnaireDetails{" +
-                "questionnaireId=" + questionnaireId +
-                ", startDate=" + startDate +
+        return "Questionnaire{" +
+                "startDate=" + startDate +
                 ", endDate=" + endDate +
                 ", answerLimit=" + answerLimit +
                 ", password='" + password + '\'' +
