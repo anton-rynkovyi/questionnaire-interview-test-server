@@ -6,7 +6,7 @@ import java.util.Set;
 @Entity
 @Table(name = "quizzes")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Quiz {
+public abstract class Quiz {
 
     @Id
     @SequenceGenerator(name = "quizzes_seq", sequenceName = "quizzes_seq")

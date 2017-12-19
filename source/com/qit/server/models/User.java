@@ -7,7 +7,8 @@ import java.util.Set;
 
 @Entity
 @Table(name = "users")
-public class User {
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class User {
 
     @Id
     @Column(name = "username", nullable = false, length = 100, unique = true)
@@ -19,14 +20,11 @@ public class User {
     @Column(name = "enabled")
     private Boolean enabled;
 
-    @OneToMany(targetEntity = Quiz.class, mappedBy = "owner")
-    private Set<Quiz> ownedQuizzes;
-
     @OneToMany(mappedBy = "user", targetEntity = UserRole.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<UserRole> userRoles;
 
-    @OneToOne(mappedBy = "user", targetEntity = UserDetails.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private UserDetails userDetails;
+    @OneToMany(targetEntity = Quiz.class, mappedBy = "owner")
+    private Set<Quiz> ownedQuizzes;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
@@ -36,13 +34,6 @@ public class User {
     )
     private Set<Quiz> quizzes;
 
-    public Set<Quiz> getQuizzes() {
-        return quizzes;
-    }
-
-    public void setQuizzes(Set<Quiz> quizzes) {
-        this.quizzes = quizzes;
-    }
 
     public User() {
         this.enabled = true;
@@ -53,6 +44,7 @@ public class User {
         this.username = username;
         this.password = password;
     }
+
 
     public String getUsername() {
         return username;
@@ -90,8 +82,16 @@ public class User {
         return ownedQuizzes;
     }
 
-    public void setOwnedQuezzes(Set<Quiz> ownedQuizzes) {
+    public void setOwnedQuizzes(Set<Quiz> ownedQuizzes) {
         this.ownedQuizzes = ownedQuizzes;
+    }
+
+    public Set<Quiz> getQuizzes() {
+        return quizzes;
+    }
+
+    public void setQuizzes(Set<Quiz> quizzes) {
+        this.quizzes = quizzes;
     }
 
     @Deprecated
@@ -102,26 +102,15 @@ public class User {
         }
     }
 
-    public UserDetails getUserDetails() {
-        return userDetails;
-    }
-
-    public void setUserDetails(UserDetails userDetails) {
-        this.userDetails = userDetails;
-    }
-
-    @Deprecated
-    public void addUserDetailss(UserDetails userDetails) {
-        setUserDetails(userDetails);
-        userDetails.setUser(this);
-    }
-
     @Override
     public String toString() {
         return "User{" +
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", enabled=" + enabled +
+                ", userRoles=" + userRoles +
+                ", ownedQuizzes=" + ownedQuizzes +
+                ", quizzes=" + quizzes +
                 '}';
     }
 }

@@ -1,10 +1,7 @@
 package com.qit.server.controllers;
 
 import com.qit.server.models.*;
-import com.qit.server.repositories.InterviewRepository;
-import com.qit.server.repositories.QuestRepository;
-import com.qit.server.repositories.UserRepository;
-import com.qit.server.repositories.UserRoleRepository;
+import com.qit.server.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,27 +27,33 @@ public class QitController {
     @Autowired
     InterviewRepository interviewRepository;
 
+    @Autowired
+    UserDetailsRepository userDetailsRepository;
+
     @RequestMapping(value = "/get", method = RequestMethod.GET)
     @ResponseBody
     public String getQit() {
 
-        User user = new User("Edik", "qwerty");
-
+        FullUser edik = new FullUser();
+        edik.setUsername("edik228");
+        edik.setPassword("qq123");
+        edik.setFirstName("Edik");
+        edik.setLastName("Belchik");
+        edik.setGender(true);
+        edik.setAdditionalInfo("My name is Edik...");
         Set<UserRole> userRoles = new HashSet<UserRole>();
         userRoles.add(new UserRole("ADMIN"));
         userRoles.add(new UserRole("MODERATOR"));
-        user.addUserRoles(userRoles);
+        edik.addUserRoles(userRoles);
 
-        UserDetails edikDetails = new UserDetails();
-        edikDetails.setEmail("edik@gmail.com");
-        edikDetails.setFirstName("Edik");
-        edikDetails.setLastName("Belchik");
-        edikDetails.setBirthDate(new java.sql.Date(System.currentTimeMillis()));
-        user.addUserDetailss(edikDetails);
+        User user = new FullUser();
+        user.setUsername("pashka412");
+        user.setPassword("passw555");
 
-        userRepository.save(user);
+        userDetailsRepository.save(edik);
+        userDetailsRepository.save(user);
 
-        return userRepository.findOne("Edik").toString();
+        return "Users created!";
     }
 
 
@@ -58,7 +61,7 @@ public class QitController {
     @ResponseBody
     public String createQuest() {
 
-        User owner = new User();
+        User owner = new FullUser();
         owner.setUsername("anton");
         Set<UserRole> userRoles = new HashSet<UserRole>();
         userRoles.add(new UserRole("ADMIN"));
@@ -88,9 +91,9 @@ public class QitController {
         Set<Quiz> quizSet = new HashSet<Quiz>();
         quizSet.add(quest);
         quizSet.add(quest2);
-        owner.setOwnedQuezzes(quizSet);
+        owner.setOwnedQuizzes(quizSet);
 
-        userRepository.save(owner);
+        userDetailsRepository.save(owner);
         questRepository.save(quest);
         questRepository.save(quest2);
 
@@ -117,10 +120,6 @@ public class QitController {
         return "Interview created!";
     }
 
-    private User createUser(String username, String password) {
-        User user = new User(username,password);
-        return user;
-    }
 
     private UserRole setRoleToUser(User user, String roleName) {
         UserRole userRole = new UserRole();

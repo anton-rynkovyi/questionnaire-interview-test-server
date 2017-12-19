@@ -41,7 +41,6 @@ CREATE TABLE user_roles(
 
 CREATE SEQUENCE user_details_seq;
 CREATE TABLE user_details(
-  user_details_id   BIGINT NOT NULL DEFAULT nextval('user_details_seq'),
          username   VARCHAR(100),
        first_name   VARCHAR(100),
         last_name   VARCHAR(100),
@@ -50,7 +49,6 @@ CREATE TABLE user_details(
            gender   BOOLEAN,
       birth_date	  DATE,
   additional_info   TEXT,
-  PRIMARY KEY(user_details_id),
   FOREIGN KEY(username) REFERENCES users(username)
 );
 

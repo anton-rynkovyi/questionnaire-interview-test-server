@@ -6,10 +6,6 @@ import javax.persistence.*;
 @Table(name = "interviews")
 public class Interview extends Quiz {
 
-    @OneToOne
-    @JoinColumn(name = "quiz_id")
-    private Quiz quiz;
-
     @Column(name = "members_limit")
     private Integer membersLimit;
 
@@ -18,14 +14,6 @@ public class Interview extends Quiz {
 
     @Column(name = "res_visibility")
     private Boolean resultVisibility;
-
-    public Quiz getQuiz() {
-        return quiz;
-    }
-
-    public void setQuiz(Quiz quiz) {
-        this.quiz = quiz;
-    }
 
     public Integer getMembersLimit() {
         return membersLimit;
@@ -54,8 +42,7 @@ public class Interview extends Quiz {
     @Override
     public String toString() {
         return "Interview{" +
-                "quiz=" + quiz +
-                ", membersLimit=" + membersLimit +
+                "membersLimit=" + membersLimit +
                 ", password='" + password + '\'' +
                 ", resultVisibility=" + resultVisibility +
                 '}';

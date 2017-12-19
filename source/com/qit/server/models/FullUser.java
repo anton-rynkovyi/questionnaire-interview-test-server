@@ -5,17 +5,8 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "user_details")
-public class UserDetails {
+public class FullUser extends User {
 
-    @Id
-    @SequenceGenerator(name = "user_details_seq", sequenceName = "user_details_seq")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_details_seq")
-    @Column(name = "user_details_id")
-    private Long userDetailsId;
-
-    @OneToOne
-    @JoinColumn(name = "username")
-    private User user;
 
     @Column(name = "first_name", length = 100)
     private String firstName;
@@ -38,22 +29,6 @@ public class UserDetails {
     @Column(name = "additional_info")
     private String additionalInfo;
 
-
-    public Long getUserDetailsId() {
-        return userDetailsId;
-    }
-
-    public void setUserDetailsId(Long userDetailsId) {
-        this.userDetailsId = userDetailsId;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -111,5 +86,16 @@ public class UserDetails {
         this.additionalInfo = additionalInfo;
     }
 
-
+    @Override
+    public String toString() {
+        return "FullUser{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", gender=" + gender +
+                ", birthDate=" + birthDate +
+                ", additionalInfo='" + additionalInfo + '\'' +
+                '}';
+    }
 }
