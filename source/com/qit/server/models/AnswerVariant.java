@@ -8,7 +8,7 @@ import java.math.BigInteger;
 public class AnswerVariant {
 
     @Id
-    @SequenceGenerator(name = "answers_variants_seq", sequenceName = "answers_variants_seq")
+    @SequenceGenerator(name = "answers_variants_seq", sequenceName = "answers_variants_seq",  allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "answers_variants_seq")
     @Column(name = "answer_variant_id")
     private Long answerVariantId;
@@ -19,6 +19,14 @@ public class AnswerVariant {
 
     @Column(name = "answer")
     private String answer;
+
+    public AnswerVariant() {
+    }
+
+    public AnswerVariant(QitQuestion qitQuestion, String answer) {
+        this.qitQuestion = qitQuestion;
+        this.answer = answer;
+    }
 
     public Long getAnswerVariantId() {
         return answerVariantId;

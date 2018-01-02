@@ -1,11 +1,16 @@
 package com.qit.server.models;
 
+import org.hibernate.annotations.GenerationTime;
+import org.hibernate.annotations.GeneratorType;
+import org.hibernate.annotations.ValueGenerationType;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Set;
 
 
 @Entity
-@Table(name = "questionnaires")
+@Table(name = "questionnaire_details")
 public class Questionnaire extends Quiz {
 
     @Column(name = "start_date")
@@ -28,6 +33,9 @@ public class Questionnaire extends Quiz {
 
     @Column(name = "res_visibility")
     private Boolean resultVisibility;
+
+    @OneToMany(targetEntity = QitQuestion.class, mappedBy = "quiz",  fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    Set<QitQuestion> questions;
 
     public Timestamp getStartDate() {
         return startDate;
@@ -83,6 +91,14 @@ public class Questionnaire extends Quiz {
 
     public void setResultVisibility(Boolean resultVisibility) {
         this.resultVisibility = resultVisibility;
+    }
+
+    public Set<QitQuestion> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(Set<QitQuestion> questions) {
+        this.questions = questions;
     }
 
     @Override

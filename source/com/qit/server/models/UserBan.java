@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 public class UserBan {
 
     @Id
-    @SequenceGenerator(name = "user_bans_seq", sequenceName = "user_bans_seq")
+    @SequenceGenerator(name = "user_bans_seq", sequenceName = "user_bans_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_bans_seq")
     @Column(name = "user_ban_id")
     private Long userBanId;

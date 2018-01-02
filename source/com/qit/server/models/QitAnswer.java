@@ -2,13 +2,14 @@ package com.qit.server.models;
 
 import javax.persistence.*;
 import java.math.BigInteger;
+import java.util.LinkedHashSet;
 
 @Entity
 @Table(name = "answers")
 public class QitAnswer {
 
     @Id
-    @SequenceGenerator(name = "answers_seq", sequenceName = "answers_seq")
+    @SequenceGenerator(name = "answers_seq", sequenceName = "answers_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "answers_seq")
     @Column(name = "answer_id")
     private Long answerId;
@@ -22,6 +23,15 @@ public class QitAnswer {
 
     @Column(name = "answer")
     private String answer;
+
+    public QitAnswer() {
+    }
+
+    public QitAnswer(QitQuestion qitQuestion, String respondentUsername, String answer) {
+        this.qitQuestion = qitQuestion;
+        this.respondentUsername = respondentUsername;
+        this.answer = answer;
+    }
 
     public Long getAnswerId() {
         return answerId;

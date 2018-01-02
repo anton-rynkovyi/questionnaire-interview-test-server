@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.math.BigInteger;
 
 @Entity
-@Table(name = "tests")
+@Table(name = "test_details")
 public class Test extends Quiz{
 
 }

@@ -9,7 +9,7 @@ import java.util.Set;
 public class QitQuestion {
 
     @Id
-    @SequenceGenerator(name = "questions_seq", sequenceName = "questions_seq")
+    @SequenceGenerator(name = "questions_seq", sequenceName = "questions_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "questions_seq")
     @Column(name = "question_id")
     private Long questionId;
@@ -60,6 +60,22 @@ public class QitQuestion {
 
     public void setSequence(Integer sequence) {
         this.sequence = sequence;
+    }
+
+    public Set<QitAnswer> getQitAnswers() {
+        return qitAnswers;
+    }
+
+    public void setQitAnswers(Set<QitAnswer> qitAnswers) {
+        this.qitAnswers = qitAnswers;
+    }
+
+    public Set<AnswerVariant> getAnswerVariants() {
+        return answerVariants;
+    }
+
+    public void setAnswerVariants(Set<AnswerVariant> answerVariants) {
+        this.answerVariants = answerVariants;
     }
 
     @Override

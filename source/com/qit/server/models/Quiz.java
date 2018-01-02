@@ -9,7 +9,7 @@ import java.util.Set;
 public abstract class Quiz {
 
     @Id
-    @SequenceGenerator(name = "quizzes_seq", sequenceName = "quizzes_seq")
+    @SequenceGenerator(name = "quizzes_seq", sequenceName = "quizzes_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "quizzes_seq")
     @Column(name = "quiz_id")
     private Long quizId;
@@ -26,7 +26,6 @@ public abstract class Quiz {
 
     @ManyToMany(targetEntity = User.class, mappedBy = "quizzes")
     private Set<User> participants;
-
 
     public Long getQuizId() {
         return quizId;

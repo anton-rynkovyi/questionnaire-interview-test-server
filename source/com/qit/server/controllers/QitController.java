@@ -30,6 +30,12 @@ public class QitController {
     @Autowired
     UserDetailsRepository userDetailsRepository;
 
+    @Autowired
+    QuestionRepository qitQuestionRepository;
+
+    @Autowired
+    AnswerVariantRepository answerVariantRepository;
+
     @RequestMapping(value = "/get", method = RequestMethod.GET)
     @ResponseBody
     public String getQit() {
@@ -56,7 +62,6 @@ public class QitController {
         return "Users created!";
     }
 
-
     @RequestMapping(value = "/create_quest1", method = RequestMethod.GET)
     @ResponseBody
     public String createQuest() {
@@ -73,7 +78,7 @@ public class QitController {
         Questionnaire quest = new Questionnaire();
         quest.setTitle("Title");
         quest.setTopic("Topic");
-//        quest.setOwner(owner);
+        quest.setOwner(owner);
         quest.setAnonymity(true);
         quest.setPassword("qwerty");
         quest.setResultVisibility(true);
@@ -82,7 +87,7 @@ public class QitController {
         Questionnaire quest2 = new Questionnaire();
         quest2.setTitle("Title2");
         quest2.setTopic("Topic2");
-//        quest.setOwner(owner);
+        quest2.setOwner(owner);
         quest2.setAnonymity(true);
         quest2.setPassword("qwerty222");
         quest2.setResultVisibility(true);
@@ -118,6 +123,47 @@ public class QitController {
         interviewRepository.save(interview);
 
         return "Interview created!";
+    }
+
+
+    @RequestMapping(value = "/create_quest_questions", method = RequestMethod.GET)
+    @ResponseBody
+    public String createQuestQuestions() {
+        createQuest();
+        Questionnaire one = questRepository.getOne(1L);
+
+        QitQuestion qitQuestion = new QitQuestion();
+        qitQuestion.setQuiz(one);
+        qitQuestion.setSequence(1);
+        qitQuestion.setSummary("What is your name?");
+
+        QitQuestion qitQuestion1 = new QitQuestion();
+        qitQuestion1.setQuiz(one);
+        qitQuestion1.setSequence(2);
+        qitQuestion1.setSummary("How old are you?");
+
+        Set<QitQuestion> questionList = new LinkedHashSet<QitQuestion>();
+        questionList.add(qitQuestion);
+        questionList.add(qitQuestion1);
+
+        AnswerVariant answerVariant1 = new AnswerVariant(qitQuestion,"Anton");
+        AnswerVariant answerVariant2 = new AnswerVariant(qitQuestion1,"Edik");
+        Set<AnswerVariant> answerVariants = new LinkedHashSet<AnswerVariant>();
+        answerVariants.add(answerVariant1);
+        answerVariants.add(answerVariant2);
+        qitQuestion.setAnswerVariants(answerVariants);
+        QitAnswer answer = new QitAnswer(qitQuestion, "nikitka228", answerVariant1.getAnswer());
+        Set<QitAnswer> answers = new LinkedHashSet<QitAnswer>();
+        answers.add(answer);
+        qitQuestion.setQitAnswers(answers);
+
+
+        qitQuestionRepository.save(questionList);
+
+        Set<QitQuestion> questions = one.getQuestions();
+        System.out.println(questions.size());
+
+        return "Questions created!";
     }
 
 

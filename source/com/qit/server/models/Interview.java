@@ -3,7 +3,7 @@ package com.qit.server.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "interviews")
+@Table(name = "interview_details")
 public class Interview extends Quiz {
 
     @Column(name = "members_limit")
