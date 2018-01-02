@@ -6,7 +6,7 @@ import java.util.LinkedHashSet;
 
 @Entity
 @Table(name = "answers")
-public class QitAnswer {
+public class QitAnswer extends LinkedHashSet {
 
     @Id
     @SequenceGenerator(name = "answers_seq", sequenceName = "answers_seq", allocationSize = 1)
