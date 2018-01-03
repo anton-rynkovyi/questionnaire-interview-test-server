@@ -1,116 +1,104 @@
 package com.qit.server.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.util.Collections;
-import java.util.Set;
+import java.sql.Date;
 
 @Entity
-@Table(name = "users")
-@Inheritance(strategy = InheritanceType.JOINED)
-public abstract class User {
-
-    @Id
-    @Column(name = "username", nullable = false, length = 100, unique = true)
-    private String username;
-
-    @Column(name = "password", nullable = false, length = 100)
-    private String password;
-
-    @Column(name = "enabled")
-    private Boolean enabled;
-
-    @OneToMany(mappedBy = "user", targetEntity = UserRole.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<UserRole> userRoles;
-
-    @OneToMany(targetEntity = Quiz.class, mappedBy = "owner")
-    private Set<Quiz> ownedQuizzes;
-
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "quizzes_users",
-            joinColumns = @JoinColumn(name = "username"),
-            inverseJoinColumns = @JoinColumn(name = "quiz_id")
-    )
-    private Set<Quiz> quizzes;
+@Table(name = "user_details")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class User extends SimpleUser {
 
 
-    public User() {
-        this.enabled = true;
+    @Column(name = "first_name", length = 100)
+    private String firstName;
+
+    @Column(name = "last_name", length = 100)
+    private String lastName;
+
+    @Column(name = "email", length = 100, unique = true)
+    private String email;
+
+    @Column(name = "phone_number", length = 40, unique = true)
+    private String phoneNumber;
+
+    @Column(name = "gender")
+    private Boolean gender;
+
+    @Column(name = "birth_date")
+    private Date birthDate;
+
+    @Column(name = "additional_info")
+    private String additionalInfo;
+
+
+    public String getFirstName() {
+        return firstName;
     }
 
-    public User(String username, String password) {
-        this();
-        this.username = username;
-        this.password = password;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-
-    public String getUsername() {
-        return username;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public Boolean getEnabled() {
-        return enabled;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public Set<UserRole> getUserRoles() {
-        return userRoles;
+    public Boolean getGender() {
+        return gender;
     }
 
-    public void setUserRoles(Set<UserRole> userRoles) {
-        this.userRoles = userRoles;
+    public void setGender(Boolean gender) {
+        this.gender = gender;
     }
 
-    public Set<Quiz> getOwnedQuizzes() {
-        return ownedQuizzes;
+    public Date getBirthDate() {
+        return birthDate;
     }
 
-    public void setOwnedQuizzes(Set<Quiz> ownedQuizzes) {
-        this.ownedQuizzes = ownedQuizzes;
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
     }
 
-    public Set<Quiz> getQuizzes() {
-        return quizzes;
+    public String getAdditionalInfo() {
+        return additionalInfo;
     }
 
-    public void setQuizzes(Set<Quiz> quizzes) {
-        this.quizzes = quizzes;
-    }
-
-    @Deprecated
-    public void addUserRoles(Set<UserRole> userRoles) {
-        setUserRoles(userRoles);
-        for (UserRole ur : userRoles) {
-            ur.setUser(this);
-        }
+    public void setAdditionalInfo(String additionalInfo) {
+        this.additionalInfo = additionalInfo;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", enabled=" + enabled +
-                ", userRoles=" + userRoles +
-                ", ownedQuizzes=" + ownedQuizzes +
-                ", quizzes=" + quizzes +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", gender=" + gender +
+                ", birthDate=" + birthDate +
+                ", additionalInfo='" + additionalInfo + '\'' +
                 '}';
     }
 }

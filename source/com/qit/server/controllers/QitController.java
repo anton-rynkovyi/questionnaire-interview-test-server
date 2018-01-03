@@ -1,9 +1,9 @@
 package com.qit.server.controllers;
 
 
-import com.qit.server.models.FullUser;
 import com.qit.server.models.User;
-import com.qit.server.service.user.UserServiceImpl;
+import com.qit.server.models.SimpleUser;
+import com.qit.server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,17 +14,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/qit")
 public class QitController {
 
+
     @Autowired
-    UserServiceImpl userService;
+    private UserService userService;
 
     @RequestMapping(value = "/register_user", method = RequestMethod.GET)
     @ResponseBody
     public String registerUser() {
-        User user = new FullUser();
+        SimpleUser user = new User();
         user.setUsername("rynkovoy");
         user.setPassword("qwerty");
 
-        userService.registerNewUser(user);
-        return "User registered";
+//        userService.registerNewUser(user);
+
+        return "SimpleUser registered";
     }
 }

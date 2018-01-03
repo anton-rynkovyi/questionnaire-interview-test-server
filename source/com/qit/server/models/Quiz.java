@@ -22,10 +22,10 @@ public abstract class Quiz {
 
     @ManyToOne
     @JoinColumn(name = "username")
-    private User owner;
+    private SimpleUser owner;
 
-    @ManyToMany(targetEntity = User.class, mappedBy = "quizzes")
-    private Set<User> participants;
+    @ManyToMany(targetEntity = SimpleUser.class, mappedBy = "quizzes")
+    private Set<SimpleUser> participants;
 
     public Long getQuizId() {
         return quizId;
@@ -51,19 +51,19 @@ public abstract class Quiz {
         this.topic = topic;
     }
 
-    public User getOwner() {
+    public SimpleUser getOwner() {
         return owner;
     }
 
-    public void setOwner(User owner) {
+    public void setOwner(SimpleUser owner) {
         this.owner = owner;
     }
 
-    public Set<User> getParticipants() {
+    public Set<SimpleUser> getParticipants() {
         return participants;
     }
 
-    public void setParticipants(Set<User> participants) {
+    public void setParticipants(Set<SimpleUser> participants) {
         this.participants = participants;
     }
 
