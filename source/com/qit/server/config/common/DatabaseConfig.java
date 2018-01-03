@@ -1,4 +1,4 @@
-package com.qit.server.config;
+package com.qit.server.config.common;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.context.annotation.Bean;

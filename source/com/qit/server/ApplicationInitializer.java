@@ -1,6 +1,6 @@
 package com.qit.server;
 
-import com.qit.server.config.WebConfig;
+import com.qit.server.config.common.WebConfig;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
