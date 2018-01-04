@@ -5,6 +5,8 @@ import com.qit.server.models.User;
 import com.qit.server.models.UserBan;
 import com.qit.server.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,13 +19,18 @@ public class UserBanController {
     UserService userService;
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public List<User> getBannedUsers() {
+    public List<User> getAllBannedUsers() {
         return userService.findAllBannedUsers();
     }
 
     @RequestMapping(value = "/user/{username}", method = RequestMethod.GET)
-    public User getBannedUsers(@PathVariable("username") String username) {
-        return userService.findOneBannedUser(username);
+    public ResponseEntity<User> getBannedUser(@PathVariable("username") String username) {
+        User oneBannedUser = userService.findOneBannedUser(username);
+        if (oneBannedUser == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(oneBannedUser);
+        }
+
+        return ResponseEntity.ok(oneBannedUser);
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
@@ -42,7 +49,7 @@ public class UserBanController {
     }
 
     @RequestMapping(value = "/{banId}", method = RequestMethod.GET)
-    public UserBan getBannedUsers(@PathVariable("banId") Long banId) {
+    public UserBan getUserBan(@PathVariable("banId") Long banId) {
         return userService.findUserBan(banId);
     }
 

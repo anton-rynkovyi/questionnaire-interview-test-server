@@ -1,5 +1,6 @@
 package com.qit.server.service.user.impl;
 
+import com.google.common.collect.FluentIterable;
 import com.qit.server.models.SimpleUser;
 import com.qit.server.models.User;
 import com.qit.server.models.UserBan;
@@ -10,6 +11,8 @@ import com.qit.server.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -85,13 +88,23 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> findAllBannedUsers() {
-        return banRepository.findAllBannedUsers();
+        List<User> users = new ArrayList<User>();
+        List<UserBan> userBans = banRepository.findAll();
+
+        for (UserBan userBan : userBans) {
+            User bannedUser = userRepository.findOne(userBan.getBannedUserUsername());
+            users.add(bannedUser);
+        }
+
+        return users;
     }
 
     @Override
     public User findOneBannedUser(String username) {
-        return banRepository.findOneBannedUser(username);
+        UserBan bannedUser = banRepository.findUserBanByBannedUserUsername(username);
+        return bannedUser != null ? userRepository.findOne(bannedUser.getBannedUserUsername()) : new User();
     }
+
 
 
     /*==================Autowired==================*/

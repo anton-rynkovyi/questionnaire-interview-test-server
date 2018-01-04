@@ -32,12 +32,7 @@ public interface UserBanRepository extends JpaRepository<UserBan, Long> {
             nativeQuery = true)
     User findOneBannedUser(String username);
 
-    @Query(value = "" +
-            "SELECT u.*" +
-            "  FROM users u, user_bans ub" +
-            " where u.username = ub.banned_user_username",
-            nativeQuery = true)
-    List<SimpleUser> findSU();
+    UserBan findUserBanByBannedUserUsername(String username);
 
     void deleteUserBansByBanOwnerUsername(String username);
 }
