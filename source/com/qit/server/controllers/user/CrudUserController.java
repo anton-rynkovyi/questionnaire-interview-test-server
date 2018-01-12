@@ -22,12 +22,12 @@ public class CrudUserController {
         return user != null ? ResponseEntity.ok(user) : ResponseEntity.status(HttpStatus.NOT_FOUND).body(user);
     }
 
-    @RequestMapping(path = "/", method = RequestMethod.GET)
+    @RequestMapping(path = "", method = RequestMethod.GET)
     public List<User> getAllUsers() {
         return userService.findAllUsers();
     }
 
-    @RequestMapping(path = "/", method = RequestMethod.POST)
+    @RequestMapping(path = "", method = RequestMethod.POST)
     public User saveUser(@RequestBody User user) {
         return userService.saveUser(user);
     }
