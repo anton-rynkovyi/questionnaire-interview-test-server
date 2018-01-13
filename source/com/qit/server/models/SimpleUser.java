@@ -8,7 +8,7 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 @Inheritance(strategy=InheritanceType.JOINED)
-public abstract class SimpleUser {
+public class SimpleUser {
 
     @Id
     @Column(name = "username", nullable = false, length = 100, unique = true)
@@ -20,7 +20,6 @@ public abstract class SimpleUser {
     @Column(name = "enabled")
     private Boolean enabled;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "user", targetEntity = UserRole.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<UserRole> userRoles;
 
