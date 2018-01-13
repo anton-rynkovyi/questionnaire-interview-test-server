@@ -7,11 +7,6 @@ import java.util.List;
 
 public interface UserService {
 
-    SimpleUser getSimpleUser(String username);
-    SimpleUser saveSimpleUser(SimpleUser user);
-    void removeSimpleUser(String username);
-    List<SimpleUser> getAllSimpleUsers();
-
     User findUser(String username);
     User saveUser(User user);
     void removeUser(String username);

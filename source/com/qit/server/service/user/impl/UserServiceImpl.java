@@ -1,10 +1,7 @@
 package com.qit.server.service.user.impl;
 
-import com.google.common.collect.FluentIterable;
-import com.qit.server.models.SimpleUser;
 import com.qit.server.models.User;
 import com.qit.server.models.UserBan;
-import com.qit.server.repositories.SimpleUserRepository;
 import com.qit.server.repositories.UserBanRepository;
 import com.qit.server.repositories.UserRepository;
 import com.qit.server.service.user.UserService;
@@ -12,39 +9,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
 
 
-    private SimpleUserRepository simpleUserRepository;
     private UserRepository userRepository;
     private UserBanRepository banRepository;
 
 
     /*==============CRUD==============*/
-
-    @Override
-    public SimpleUser getSimpleUser(String username) {
-        return simpleUserRepository.getOne(username);
-    }
-
-    @Override
-    public SimpleUser saveSimpleUser(SimpleUser simpleUser) {
-        return simpleUserRepository.save(simpleUser);
-    }
-
-    @Override
-    public void removeSimpleUser(String username) {
-        simpleUserRepository.delete(username);
-    }
-
-    @Override
-    public List<SimpleUser> getAllSimpleUsers() {
-        return simpleUserRepository.findAll();
-    }
 
     @Override
     public User findUser(String username) {
@@ -112,11 +87,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     public void setUserRepository(UserRepository userRepository) {
         this.userRepository = userRepository;
-    }
-
-    @Autowired
-    public void setSimpleUserRepository(SimpleUserRepository simpleUserRepository) {
-        this.simpleUserRepository = simpleUserRepository;
     }
 
     @Autowired

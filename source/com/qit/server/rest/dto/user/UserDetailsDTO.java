@@ -1,37 +1,19 @@
-package com.qit.server.models;
+package com.qit.server.rest.dto.user;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import javax.persistence.*;
 import java.sql.Date;
 
-@Entity
-@Table(name = "user_details")
-@PrimaryKeyJoinColumn(referencedColumnName="username")
-//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class User extends SimpleUser {
+public class UserDetailsDTO extends UserCredentialDTO{
 
-    @Column(name = "first_name", length = 100)
     private String firstName;
-
-    @Column(name = "last_name", length = 100)
     private String lastName;
-
-    @Column(name = "email", length = 100, unique = true)
     private String email;
-
-    @Column(name = "phone_number", length = 40, unique = true)
     private String phoneNumber;
-
-    @Column(name = "gender")
     private Boolean gender;
-
-    @Column(name = "birth_date")
     private Date birthDate;
-
-    @Column(name = "additional_info")
     private String additionalInfo;
 
+    public UserDetailsDTO() {
+    }
 
     public String getFirstName() {
         return firstName;
@@ -87,18 +69,5 @@ public class User extends SimpleUser {
 
     public void setAdditionalInfo(String additionalInfo) {
         this.additionalInfo = additionalInfo;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", gender=" + gender +
-                ", birthDate=" + birthDate +
-                ", additionalInfo='" + additionalInfo + '\'' +
-                '}';
     }
 }

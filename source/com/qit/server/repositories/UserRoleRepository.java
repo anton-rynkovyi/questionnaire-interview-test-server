@@ -10,5 +10,6 @@ import java.util.Set;
 public interface UserRoleRepository extends JpaRepository<UserRole, BigInteger> {
 
 //    @Query(value = "SELECT * FROM user_roles WHERE username = ?1", nativeQuery = true)
-    Set<UserRole> findUserRolesByUser(SimpleUser username);
+    Set<UserRole> findRolesByUser(SimpleUser user);
+
 }

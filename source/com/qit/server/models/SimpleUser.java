@@ -1,17 +1,14 @@
 package com.qit.server.models;
 
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @Table(name = "users")
-@Inheritance(strategy = InheritanceType.JOINED)
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class SimpleUser {
+@Inheritance(strategy=InheritanceType.JOINED)
+public abstract class SimpleUser {
 
     @Id
     @Column(name = "username", nullable = false, length = 100, unique = true)
@@ -23,7 +20,8 @@ public class SimpleUser {
     @Column(name = "enabled")
     private Boolean enabled;
 
-    @OneToMany(mappedBy = "user", targetEntity = UserRole.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", targetEntity = UserRole.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<UserRole> userRoles;
 
     @OneToMany(targetEntity = Quiz.class, mappedBy = "owner")
