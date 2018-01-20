@@ -24,10 +24,10 @@ public class QitQuestion {
     @Column(name = "sequence")
     private Integer sequence;
 
-    @OneToMany(mappedBy = "qitQuestion", targetEntity = QitAnswer.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "qitQuestion", targetEntity = QitAnswer.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<QitAnswer> qitAnswers;
 
-    @OneToMany(mappedBy = "qitQuestion", targetEntity = AnswerVariant.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "qitQuestion", targetEntity = AnswerVariant.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<AnswerVariant> answerVariants;
 
     public Long getQuestionId() {

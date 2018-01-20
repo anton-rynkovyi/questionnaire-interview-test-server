@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/user-details")
+@RequestMapping(path = "api/users/details")
 public class UserDetailsController {
 
     @Autowired

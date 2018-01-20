@@ -1,7 +1,9 @@
 package com.qit.server.service.quizzes.questionnaire.impl;
 
+import com.qit.server.models.QitQuestion;
 import com.qit.server.models.Questionnaire;
 import com.qit.server.repositories.QuestRepository;
+import com.qit.server.service.question.QuestionService;
 import com.qit.server.service.quizzes.questionnaire.QuestionnaireService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,11 +15,17 @@ public class QuestionnaireServiceImpl implements QuestionnaireService {
 
     private QuestRepository questRepository;
 
+    @Autowired
+    private QuestionService questionService;
+
     /*==============CRUD==============*/
 
     @Override
     public Questionnaire findQuestionnaire(Long quizId) {
-        return questRepository.findOne(quizId);
+        Questionnaire questionnaire = questRepository.findOne(quizId);
+  /*      List<QitQuestion> questions = questionService.findQuestionsByQuiz(questionnaire);
+        questionnaire.setQuestions();*/
+        return questionnaire;
     }
 
     @Override

@@ -70,7 +70,6 @@ public class UserServiceImpl implements UserService {
             User bannedUser = userRepository.findOne(userBan.getBannedUserUsername());
             users.add(bannedUser);
         }
-
         return users;
     }
 

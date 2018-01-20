@@ -27,6 +27,9 @@ public class Quiz {
     @ManyToMany(targetEntity = SimpleUser.class, mappedBy = "quizzes")
     private Set<SimpleUser> participants;
 
+    @OneToMany(targetEntity = QitQuestion.class, mappedBy = "quiz",  fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<QitQuestion> questions;
+
     public Long getQuizId() {
         return quizId;
     }
@@ -65,6 +68,14 @@ public class Quiz {
 
     public void setParticipants(Set<SimpleUser> participants) {
         this.participants = participants;
+    }
+
+    public Set<QitQuestion> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(Set<QitQuestion> questions) {
+        this.questions = questions;
     }
 
     @Override

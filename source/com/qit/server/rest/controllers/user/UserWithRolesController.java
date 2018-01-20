@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("user-roles")
+@RequestMapping("api/users/roles")
 public class UserWithRolesController {
 
     @Autowired

@@ -1,38 +1,26 @@
-package com.qit.server.models;
+package com.qit.server.rest.dto.quizzes.questionnaire;
 
-import org.hibernate.annotations.GenerationTime;
-import org.hibernate.annotations.GeneratorType;
-import org.hibernate.annotations.ValueGenerationType;
+import com.qit.server.rest.dto.questions.QuestionDTO;
+import com.qit.server.rest.dto.quizzes.quiz.QuizDTO;
 
-import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Set;
 
+public class QuestionnaireDTO extends QuizDTO {
 
-@Entity
-@Table(name = "questionnaire_details")
-public class Questionnaire extends Quiz {
-
-    @Column(name = "start_date")
     private Timestamp startDate;
-
-    @Column(name = "end_date")
     private Timestamp endDate;
-
-    @Column(name = "answers_limit")
     private Integer answerLimit;
-
-    @Column(name = "password")
     private String password;
-
-    @Column(name = "vote")
     private Boolean vote;
-
-    @Column(name = "anonymity")
     private Boolean anonymity;
-
-    @Column(name = "res_visibility")
     private Boolean resultVisibility;
+    private Set<QuestionDTO> questions;
+
+
+    public QuestionnaireDTO() {
+    }
+
 
     public Timestamp getStartDate() {
         return startDate;
@@ -90,16 +78,11 @@ public class Questionnaire extends Quiz {
         this.resultVisibility = resultVisibility;
     }
 
-    @Override
-    public String toString() {
-        return "Questionnaire{" +
-                "startDate=" + startDate +
-                ", endDate=" + endDate +
-                ", answerLimit=" + answerLimit +
-                ", password='" + password + '\'' +
-                ", vote=" + vote +
-                ", anonymity=" + anonymity +
-                ", resultVisibility=" + resultVisibility +
-                '}';
+    public Set<QuestionDTO> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(Set<QuestionDTO> questions) {
+        this.questions = questions;
     }
 }

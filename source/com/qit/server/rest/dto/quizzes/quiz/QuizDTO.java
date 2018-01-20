@@ -10,6 +10,7 @@ public class QuizDTO {
     private String topic;
     private UserCredentialDTO owner;
 
+
     public QuizDTO() {
     }
 

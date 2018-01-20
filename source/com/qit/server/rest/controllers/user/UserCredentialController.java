@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user-credentials")
+@RequestMapping("api/users/credentials")
 public class UserCredentialController {
 
     @Autowired

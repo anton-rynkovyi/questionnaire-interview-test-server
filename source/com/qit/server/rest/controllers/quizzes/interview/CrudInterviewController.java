@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/interviews")
+@RequestMapping("api/interviews")
 public class CrudInterviewController {
 
     @Autowired
@@ -31,7 +31,7 @@ public class CrudInterviewController {
 
     @RequestMapping(path = "", method = RequestMethod.GET)
     public List<InterviewDTO> getAllInterviews() {
-        List<InterviewDTO> interviewDTOs = new ArrayList<>();
+        List<InterviewDTO> interviewDTOs = new ArrayList<InterviewDTO>();
         List<Interview> interviews = interviewService.findAllInterviews();
         for (Interview interview : interviews){
             interviewDTOs.add(modelMapper.map(interview, InterviewDTO.class));

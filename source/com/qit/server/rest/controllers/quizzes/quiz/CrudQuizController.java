@@ -31,7 +31,7 @@ public class CrudQuizController {
 
     @RequestMapping(path = "", method = RequestMethod.GET)
     public List<QuizDTO> getAllQuizzes() {
-        List<QuizDTO> quizDTOs = new ArrayList<>();
+        List<QuizDTO> quizDTOs = new ArrayList<QuizDTO>();
         List<Quiz> quizzes = quizService.findAllQuizzes();
         for (Quiz quiz : quizzes){
             quizDTOs.add(modelMapper.map(quiz, QuizDTO.class));

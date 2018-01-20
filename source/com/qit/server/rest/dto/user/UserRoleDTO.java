@@ -23,6 +23,4 @@ public class UserRoleDTO {
     public void setRole(String role) {
         this.role = role;
     }
-
-
 }
