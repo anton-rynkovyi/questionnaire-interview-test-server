@@ -31,6 +31,12 @@ public class CrudQuestionController {
         return questionDTOs;
     }
 
+    @RequestMapping(path = "", method = RequestMethod.POST)
+    public QuestionDTO saveQuestion(@RequestBody QuestionDTO questionDTO) {
+        questionService.saveQuestion(modelMapper.map(questionDTO, QitQuestion.class));
+        return questionDTO;
+    }
+
     @Transactional
     @RequestMapping(path = "/{questionId}", method = RequestMethod.DELETE)
     public void removeQuestionById(@PathVariable("questionId") Long questionId) {

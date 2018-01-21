@@ -23,9 +23,6 @@ public class CrudQuestionnaireController {
     private QuestionnaireService questionnaireService;
 
     @Autowired
-    private QuestionService questionService;
-
-    @Autowired
     private ModelMapper modelMapper;
 
 
