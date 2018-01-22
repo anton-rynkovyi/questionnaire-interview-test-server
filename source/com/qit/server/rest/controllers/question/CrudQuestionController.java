@@ -3,6 +3,8 @@ package com.qit.server.rest.controllers.question;
 import com.qit.server.models.QitQuestion;
 import com.qit.server.rest.dto.questions.QuestionDTO;
 import com.qit.server.service.question.QuestionService;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,6 +40,7 @@ public class CrudQuestionController {
     }
 
     @Transactional
+    @Cascade(CascadeType.ALL)
     @RequestMapping(path = "/{questionId}", method = RequestMethod.DELETE)
     public void removeQuestionById(@PathVariable("questionId") Long questionId) {
         questionService.removeQuestionById(questionId);

@@ -2,6 +2,8 @@ package com.qit.server.rest.dto.questions;
 
 import com.qit.server.models.AnswerVariant;
 import com.qit.server.models.QitAnswer;
+import com.qit.server.rest.dto.answer.AnswerDTO;
+import com.qit.server.rest.dto.answer.variant.AnswerVariantDTO;
 
 import java.util.Set;
 
@@ -11,8 +13,8 @@ public class QuestionDTO {
     private Long questionId;
     private String summary;
     private Integer sequence;
-    private Set<QitAnswer> qitAnswers;
-    private Set<AnswerVariant> answerVariants;
+    private Set<AnswerDTO> qitAnswers;
+    private Set<AnswerVariantDTO> answerVariants;
 
     public QuestionDTO() {
     }
@@ -42,19 +44,19 @@ public class QuestionDTO {
         this.sequence = sequence;
     }
 
-    public Set<QitAnswer> getQitAnswers() {
+    public Set<AnswerDTO> getQitAnswers() {
         return qitAnswers;
     }
 
-    public void setQitAnswers(Set<QitAnswer> qitAnswers) {
+    public void setQitAnswers(Set<AnswerDTO> qitAnswers) {
         this.qitAnswers = qitAnswers;
     }
 
-    public Set<AnswerVariant> getAnswerVariants() {
+    public Set<AnswerVariantDTO> getAnswerVariants() {
         return answerVariants;
     }
 
-    public void setAnswerVariants(Set<AnswerVariant> answerVariants) {
+    public void setAnswerVariants(Set<AnswerVariantDTO> answerVariants) {
         this.answerVariants = answerVariants;
     }
 
