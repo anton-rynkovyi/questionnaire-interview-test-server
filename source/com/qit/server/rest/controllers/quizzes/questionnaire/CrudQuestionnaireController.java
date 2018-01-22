@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/questionnaires")
+@RequestMapping("/api/questionnaires")
 public class CrudQuestionnaireController {
 
     @Autowired
