@@ -10,6 +10,7 @@ public interface QuestionService {
 
     List<QitQuestion> findQuestionsByQuiz(Quiz quiz);
     List<QitQuestion> findQuestionsByQuizId(Long questionId);
+    QitQuestion findQuestionById(Long questionId);
     QitQuestion saveQuestion(QitQuestion question);
     void removeQuestionById(Long questionId);
     List<QitQuestion> findAllQuestions();

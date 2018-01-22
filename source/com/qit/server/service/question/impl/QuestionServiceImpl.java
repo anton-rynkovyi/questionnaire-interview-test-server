@@ -26,6 +26,11 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
+    public QitQuestion findQuestionById(Long questionId) {
+        return questionRepository.findQitQuestionByQuestionId(questionId);
+    }
+
+    @Override
     public QitQuestion saveQuestion(QitQuestion question) {
         return questionRepository.save(question);
     }

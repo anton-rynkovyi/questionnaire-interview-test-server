@@ -41,4 +41,5 @@ public class AnswerDTO {
     public void setAnswer(String answer) {
         this.answer = answer;
     }
+
 }

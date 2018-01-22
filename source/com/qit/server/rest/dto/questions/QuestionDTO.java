@@ -1,7 +1,5 @@
 package com.qit.server.rest.dto.questions;
 
-import com.qit.server.models.AnswerVariant;
-import com.qit.server.models.QitAnswer;
 import com.qit.server.rest.dto.answer.AnswerDTO;
 import com.qit.server.rest.dto.answer.variant.AnswerVariantDTO;
 
@@ -18,7 +16,6 @@ public class QuestionDTO {
 
     public QuestionDTO() {
     }
-
 
     public Long getQuestionId() {
         return questionId;

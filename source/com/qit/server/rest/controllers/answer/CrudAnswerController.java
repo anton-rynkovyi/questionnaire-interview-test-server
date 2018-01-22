@@ -3,6 +3,7 @@ package com.qit.server.rest.controllers.answer;
 import com.qit.server.models.QitAnswer;
 import com.qit.server.rest.dto.answer.AnswerDTO;
 import com.qit.server.service.answer.AnswerService;
+import com.qit.server.service.question.QuestionService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +18,9 @@ public class CrudAnswerController {
 
     @Autowired
     private AnswerService answerService;
+
+    @Autowired
+    private QuestionService questionService;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -41,6 +45,8 @@ public class CrudAnswerController {
     @RequestMapping(path = "", method = RequestMethod.POST)
     public AnswerDTO saveAnswer(@RequestBody AnswerDTO answerDTO) {
         QitAnswer answer = modelMapper.map(answerDTO, QitAnswer.class);
+        //todo make true mapping without questionService#findQuestionById()
+        answer.setQitQuestion(questionService.findQuestionById(answerDTO.getQuestionId()));
         answerService.saveAnswer(answer);
         return answerDTO;
     }

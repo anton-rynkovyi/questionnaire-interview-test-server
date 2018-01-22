@@ -32,7 +32,7 @@ public class AnswerServiceImpl implements AnswerService {
 
     @Override
     public QitAnswer saveAnswer(QitAnswer answer) {
-        return answerRepository.saveAndFlush(answer);
+        return answerRepository.save(answer);
     }
 
     @Override

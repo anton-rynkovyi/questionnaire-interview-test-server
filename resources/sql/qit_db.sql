@@ -154,7 +154,7 @@ MINVALUE 1;
 
 CREATE TABLE answers (
   answer_id           BIGINT NOT NULL DEFAULT nextval('answers_seq'),
-  question_id         BIGINT,
+  question_id         BIGINT NOT NULL ,
   respondent_username VARCHAR(100),
   answer              TEXT   NOT NULL,
   PRIMARY KEY (answer_id),

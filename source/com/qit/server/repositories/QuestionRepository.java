@@ -12,6 +12,7 @@ public interface QuestionRepository extends JpaRepository<QitQuestion, Long> {
 
     List<QitQuestion> findQitQuestionsByQuiz(Quiz quiz);
     List<QitQuestion> findQitQuestionsByQuizQuizId(Long quizId);
+    QitQuestion findQitQuestionByQuestionId(Long questionId);
 
     @Modifying
     @Query(value = "DELETE FROM QitQuestion WHERE questionId = ?1")

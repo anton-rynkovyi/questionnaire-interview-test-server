@@ -3,6 +3,7 @@ package com.qit.server.rest.controllers.answer.variant;
 import com.qit.server.models.AnswerVariant;
 import com.qit.server.rest.dto.answer.variant.AnswerVariantDTO;
 import com.qit.server.service.answer.variant.AnswerVariantService;
+import com.qit.server.service.question.QuestionService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +18,9 @@ public class CrudAnswerVariantController {
 
     @Autowired
     private AnswerVariantService answerVariantService;
+
+    @Autowired
+    private QuestionService questionService;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -41,6 +45,8 @@ public class CrudAnswerVariantController {
     @RequestMapping(path = "", method = RequestMethod.POST)
     public AnswerVariantDTO saveAnswerVariant(@RequestBody AnswerVariantDTO answerVariantDTO) {
         AnswerVariant answerVariant = modelMapper.map(answerVariantDTO, AnswerVariant.class);
+        //todo make true mapping without questionService#findQuestionById()
+        answerVariant.setQitQuestion(questionService.findQuestionById(answerVariantDTO.getQuestionId()));
         answerVariantService.saveAnswerVariant(answerVariant);
         return answerVariantDTO;
     }
