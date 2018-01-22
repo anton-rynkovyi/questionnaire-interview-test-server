@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/quizzes")
+@RequestMapping("/api/quizzes")
 public class CrudQuizController {
 
     @Autowired
