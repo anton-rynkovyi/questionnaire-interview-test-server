@@ -1,12 +1,11 @@
-package com.qit.server.rest.controllers.answer.variant;
+package com.qit.server.rest.controllers;
 
 import com.qit.server.models.AnswerVariant;
-import com.qit.server.rest.dto.answer.variant.AnswerVariantDTO;
+import com.qit.server.rest.dto.AnswerVariantDTO;
 import com.qit.server.service.answer.variant.AnswerVariantService;
 import com.qit.server.service.question.QuestionService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;

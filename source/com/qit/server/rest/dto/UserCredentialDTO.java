@@ -1,4 +1,4 @@
-package com.qit.server.rest.dto.user;
+package com.qit.server.rest.dto;
 
 public class UserCredentialDTO {
 

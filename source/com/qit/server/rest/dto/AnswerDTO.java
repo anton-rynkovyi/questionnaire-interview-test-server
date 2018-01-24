@@ -1,4 +1,4 @@
-package com.qit.server.rest.dto.answer;
+package com.qit.server.rest.dto;
 
 public class AnswerDTO {
 

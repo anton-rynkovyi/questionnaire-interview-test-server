@@ -1,7 +1,4 @@
-package com.qit.server.rest.dto.quizzes.questionnaire;
-
-import com.qit.server.rest.dto.questions.QuestionDTO;
-import com.qit.server.rest.dto.quizzes.quiz.QuizDTO;
+package com.qit.server.rest.dto;
 
 import java.sql.Timestamp;
 import java.util.Set;

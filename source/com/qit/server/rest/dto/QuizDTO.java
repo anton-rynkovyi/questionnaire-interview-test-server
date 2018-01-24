@@ -1,7 +1,5 @@
-package com.qit.server.rest.dto.quizzes.quiz;
+package com.qit.server.rest.dto;
 
-
-import com.qit.server.rest.dto.user.UserCredentialDTO;
 
 public class QuizDTO {
 

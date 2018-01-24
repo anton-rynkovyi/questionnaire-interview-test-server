@@ -1,7 +1,7 @@
-package com.qit.server.rest.controllers.user;
+package com.qit.server.rest.controllers;
 
 import com.qit.server.models.User;
-import com.qit.server.rest.dto.user.UserDetailsDTO;
+import com.qit.server.rest.dto.UserDetailsDTO;
 import com.qit.server.service.user.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

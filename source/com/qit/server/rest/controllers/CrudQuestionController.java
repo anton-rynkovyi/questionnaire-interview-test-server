@@ -1,7 +1,7 @@
-package com.qit.server.rest.controllers.question;
+package com.qit.server.rest.controllers;
 
 import com.qit.server.models.QitQuestion;
-import com.qit.server.rest.dto.questions.QuestionDTO;
+import com.qit.server.rest.dto.QuestionDTO;
 import com.qit.server.service.question.QuestionService;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;

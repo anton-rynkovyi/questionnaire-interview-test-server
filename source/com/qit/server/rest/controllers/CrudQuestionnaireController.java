@@ -1,10 +1,7 @@
-package com.qit.server.rest.controllers.quizzes.questionnaire;
+package com.qit.server.rest.controllers;
 
-import com.qit.server.models.QitQuestion;
 import com.qit.server.models.Questionnaire;
-import com.qit.server.rest.dto.questions.QuestionDTO;
-import com.qit.server.rest.dto.quizzes.questionnaire.QuestionnaireDTO;
-import com.qit.server.service.question.QuestionService;
+import com.qit.server.rest.dto.QuestionnaireDTO;
 import com.qit.server.service.quizzes.questionnaire.QuestionnaireService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +34,7 @@ public class CrudQuestionnaireController {
     @RequestMapping(path = "", method = RequestMethod.GET)
     public List<QuestionnaireDTO> findAllQuestionnaires() {
         List<Questionnaire> allQuestionnaires = questionnaireService.findAllQuestionnaires();
-        List<QuestionnaireDTO> questionnaireDTOs = new ArrayList<QuestionnaireDTO>();
+        List<QuestionnaireDTO> questionnaireDTOs = new ArrayList<>();
 
         for (Questionnaire questionnaire : allQuestionnaires) {
             questionnaireDTOs.add(modelMapper.map(questionnaire, QuestionnaireDTO.class));

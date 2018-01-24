@@ -1,4 +1,4 @@
-package com.qit.server.rest.controllers.user;
+package com.qit.server.rest.controllers;
 
 
 import com.qit.server.models.User;

@@ -1,7 +1,7 @@
-package com.qit.server.rest.dto.questions;
+package com.qit.server.rest.dto;
 
-import com.qit.server.rest.dto.answer.AnswerDTO;
-import com.qit.server.rest.dto.answer.variant.AnswerVariantDTO;
+import com.qit.server.rest.dto.AnswerDTO;
+import com.qit.server.rest.dto.AnswerVariantDTO;
 
 import java.util.Set;
 

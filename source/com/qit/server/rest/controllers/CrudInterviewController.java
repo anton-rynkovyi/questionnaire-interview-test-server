@@ -1,7 +1,7 @@
-package com.qit.server.rest.controllers.quizzes.interview;
+package com.qit.server.rest.controllers;
 
 import com.qit.server.models.Interview;
-import com.qit.server.rest.dto.quizzes.interview.InterviewDTO;
+import com.qit.server.rest.dto.InterviewDTO;
 import com.qit.server.service.quizzes.interview.InterviewService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

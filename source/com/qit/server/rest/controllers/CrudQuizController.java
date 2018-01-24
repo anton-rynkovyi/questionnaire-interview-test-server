@@ -1,7 +1,7 @@
-package com.qit.server.rest.controllers.quizzes.quiz;
+package com.qit.server.rest.controllers;
 
 import com.qit.server.models.Quiz;
-import com.qit.server.rest.dto.quizzes.quiz.QuizDTO;
+import com.qit.server.rest.dto.QuizDTO;
 import com.qit.server.service.quizzes.quiz.QuizService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
-package com.qit.server.rest.controllers.answer;
+package com.qit.server.rest.controllers;
 
 import com.qit.server.models.QitAnswer;
-import com.qit.server.rest.dto.answer.AnswerDTO;
+import com.qit.server.rest.dto.AnswerDTO;
 import com.qit.server.service.answer.AnswerService;
 import com.qit.server.service.question.QuestionService;
 import org.modelmapper.ModelMapper;

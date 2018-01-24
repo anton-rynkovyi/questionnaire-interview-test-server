@@ -1,4 +1,4 @@
-package com.qit.server.rest.dto.answer.variant;
+package com.qit.server.rest.dto;
 
 public class AnswerVariantDTO {
 
