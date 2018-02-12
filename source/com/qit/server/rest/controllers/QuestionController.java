@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api/questions")
-public class CrudQuestionController {
+public class QuestionController {
 
     @Autowired
     private QuestionService questionService;

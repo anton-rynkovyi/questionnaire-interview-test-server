@@ -4,8 +4,10 @@ import com.qit.server.models.User;
 import com.qit.server.models.UserBan;
 import com.qit.server.repositories.UserBanRepository;
 import com.qit.server.repositories.UserRepository;
+import com.qit.server.rest.dto.UserCredentialDTO;
 import com.qit.server.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.authentication.UserCredentials;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -39,6 +41,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> findAllUsers() {
         return userRepository.findAll();
+    }
+
+    @Override
+    public User authorize(User user) {
+        String username = user.getUsername();
+        String password = user.getPassword();
+        return userRepository.findUserByUsernameAndPassword(username, password);
     }
 
     @Override
