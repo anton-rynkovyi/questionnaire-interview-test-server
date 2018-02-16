@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("api/authorization")
 public class AuthorizationController {
 
-
     @Autowired
     private UserService userService;
 
