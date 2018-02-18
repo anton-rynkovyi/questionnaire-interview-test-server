@@ -5,10 +5,8 @@ import lombok.Data;
 
 import javax.persistence.*;
 
-/**
- * Created by Arizel on 18.02.2018.
- */
 @Entity
+@Table(name = "variants")
 @Data
 public class Variant {
 

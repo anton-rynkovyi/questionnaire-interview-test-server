@@ -7,10 +7,8 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.Set;
 
-/**
- * Created by Arizel on 18.02.2018.
- */
 @Entity
+@Table(name = "results")
 @Data
 public class Result {
 
@@ -20,7 +18,7 @@ public class Result {
 
 	@ManyToOne
 	@JoinColumn(name = "author_id")
-	private User user;
+	private User author;
 
 	@ManyToOne
 	@JoinColumn(name = "quiz_id")

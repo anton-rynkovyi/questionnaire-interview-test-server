@@ -6,10 +6,8 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.Set;
 
-/**
- * Created by Arizel on 18.02.2018.
- */
 @Entity
+@Table(name = "answers")
 @Data
 public class Answer {
 
