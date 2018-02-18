@@ -11,6 +11,7 @@ import java.util.Set;
  * Created by Arizel on 18.02.2018.
  */
 @Entity
+@Table(name = "user")
 @Data
 public class User {
 
