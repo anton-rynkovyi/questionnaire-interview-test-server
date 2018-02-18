@@ -18,7 +18,7 @@ import java.util.Properties;
 
 
 @Configuration
-@EnableJpaRepositories("com.qit.server.repositories")
+@EnableJpaRepositories("com.qit.server.dao")
 @EnableTransactionManagement
 @PropertySource("classpath:db.properties")
 @ComponentScan("com.qit.server")
