@@ -3,7 +3,7 @@ package com.qit.server.dto;
 import lombok.Data;
 
 @Data
-public class Response {
+public class QitResponse {
 
 	private Long id;
 	private boolean isSuccessfully;

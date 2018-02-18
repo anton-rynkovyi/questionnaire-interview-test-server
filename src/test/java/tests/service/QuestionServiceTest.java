@@ -1,6 +1,6 @@
 package tests.service;
 
-import com.qit.server.dto.Response;
+import com.qit.server.dto.QitResponse;
 import com.qit.server.model.question.Question;
 import com.qit.server.model.question.QuestionType;
 import com.qit.server.service.QuestionService;
@@ -16,11 +16,38 @@ public class QuestionServiceTest extends AbstractTest {
 
 	@Test
 	public void createQuestion() {
+		Question question = newQuestion();
+		QitResponse qitResponse = questionService.saveQuestion(question);
+		Assert.assertTrue(qitResponse.isSuccessfully());
+	}
+
+	@Test
+	public void updateQuestion() {
+		Question question = newQuestion();
+		QitResponse qitResponse = questionService.saveQuestion(question);
+		Assert.assertTrue(qitResponse.isSuccessfully());
+		question = questionService.getQuestion(qitResponse.getId());
+		question.setQuestionType(QuestionType.CHECKBOX);
+		qitResponse = questionService.saveQuestion(question);
+		question = questionService.getQuestion(qitResponse.getId());
+		Assert.assertTrue(QuestionType.CHECKBOX == question.getQuestionType());
+	}
+
+	@Test
+	public void deleteQuestion() {
+		Question question = newQuestion();
+		QitResponse qitResponse = questionService.saveQuestion(question);
+		Assert.assertTrue(qitResponse.isSuccessfully());
+		question = questionService.getQuestion(qitResponse.getId());
+		qitResponse = questionService.deleteQuestion(question);
+		Assert.assertTrue(qitResponse.isSuccessfully());
+	}
+
+	private Question newQuestion() {
 		Question question = new Question();
 		question.setNecessary(true);
 		question.setQuestionType(QuestionType.ONLY_ONE);
-		Response response = questionService.createQuestion(question);
-		Assert.assertTrue(response.isSuccessfully());
-	}
 
+		return question;
+	}
 }

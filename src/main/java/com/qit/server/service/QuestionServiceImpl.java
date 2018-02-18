@@ -1,7 +1,7 @@
 package com.qit.server.service;
 
 import com.qit.server.dao.QuestionDao;
-import com.qit.server.dto.Response;
+import com.qit.server.dto.QitResponse;
 import com.qit.server.model.question.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,21 +21,24 @@ public class QuestionServiceImpl implements QuestionService {
 
 	@Override
 	public Question getQuestion(Long id) {
-		return null;
+		return questionDao.findOne(id);
 	}
 
 	@Override
-	public Response createQuestion(Question question) {
-		return null;
+	public QitResponse saveQuestion(Question question) {
+		question = questionDao.save(question);
+		QitResponse qitResponse = new QitResponse();
+		qitResponse.successed();
+		qitResponse.setId(question.getId());
+		return qitResponse;
 	}
 
 	@Override
-	public Response updateQuestion(Question question) {
-		return null;
-	}
-
-	@Override
-	public Response deleteQuestion(Question question) {
-		return null;
+	public QitResponse deleteQuestion(Question question) {
+		questionDao.delete(question);
+		QitResponse qitResponse = new QitResponse();
+		qitResponse.successed();
+		qitResponse.setId(question.getId());
+		return qitResponse;
 	}
 }
