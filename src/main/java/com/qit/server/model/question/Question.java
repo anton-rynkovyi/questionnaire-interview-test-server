@@ -1,0 +1,34 @@
+package com.qit.server.model.question;
+
+import com.qit.server.model.answer.Variant;
+import com.qit.server.model.quiz.Quiz;
+import lombok.Data;
+
+import javax.persistence.*;
+import java.util.Set;
+
+/**
+ * Created by Arizel on 18.02.2018.
+ */
+@Entity
+@Data
+public class Question {
+
+	@Id
+	@GeneratedValue
+	private Long id;
+
+	@Column(name = "necessary")
+	private boolean isNecessary;
+
+	@Enumerated(value = EnumType.STRING)
+	@Column(name = "question_type")
+	private QuestionType questionType;
+
+	@ManyToOne
+	@JoinColumn(name = "quiz_id")
+	private Quiz quiz;
+
+	@OneToMany(mappedBy = "question", fetch = FetchType.LAZY)
+	private Set<Variant> variants;
+}
