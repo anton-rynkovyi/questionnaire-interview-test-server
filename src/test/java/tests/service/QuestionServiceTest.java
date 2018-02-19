@@ -19,6 +19,8 @@ public class QuestionServiceTest extends AbstractTest {
 		Question question = newQuestion();
 		QitResponse qitResponse = questionService.saveQuestion(question);
 		Assert.assertTrue(qitResponse.isSuccessfully());
+		qitResponse = questionService.saveQuestion(null);
+		Assert.assertFalse(qitResponse.isSuccessfully());
 	}
 
 	@Test

@@ -19,6 +19,9 @@ public class Question {
 	@Column(name = "necessary")
 	private boolean isNecessary;
 
+	@Column(name = "text")
+	private String text;
+
 	@Enumerated(value = EnumType.STRING)
 	@Column(name = "question_type")
 	private QuestionType questionType;

@@ -5,6 +5,7 @@ import com.qit.server.model.quiz.Result;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -13,8 +14,32 @@ import java.util.Set;
 public class User {
 
 	@Id
-	@GeneratedValue
-	private Long id;
+	@Column(name = "login")
+	private String login;
+
+	@Column(name = "password")
+	private String password;
+
+	@Column(name = "enabled")
+	private boolean isEnabled;
+
+	@Column(name = "first_name")
+	private String firstName;
+
+	@Column(name = "last_name")
+	private String lastName;
+
+	@Column(name = "email")
+	private String email;
+
+	@Column(name = "phone_number")
+	private String phoneNumber;
+
+	@Column(name = "birthday")
+	private Date birthday;
+
+	@Column(name = "additional_info")
+	private String additionalInfo;
 
 	@Enumerated(value = EnumType.STRING)
 	@Column(name = "gender")

@@ -7,6 +7,7 @@ public class QitResponse {
 
 	private Long id;
 	private boolean isSuccessfully;
+	private String primaryKey;
 	private String errorMessage;
 
 	public void successed() {

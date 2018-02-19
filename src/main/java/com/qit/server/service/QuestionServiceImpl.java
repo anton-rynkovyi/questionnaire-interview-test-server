@@ -26,10 +26,14 @@ public class QuestionServiceImpl implements QuestionService {
 
 	@Override
 	public QitResponse saveQuestion(Question question) {
-		question = questionDao.save(question);
 		QitResponse qitResponse = new QitResponse();
-		qitResponse.successed();
-		qitResponse.setId(question.getId());
+		if (question == null) {
+			qitResponse.failed();
+		} else {
+			question = questionDao.save(question);
+			qitResponse.successed();
+			qitResponse.setId(question.getId());
+		}
 		return qitResponse;
 	}
 
