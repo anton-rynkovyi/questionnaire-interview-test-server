@@ -1,4 +1,4 @@
-package com.qit.server.service;
+package com.qit.server.service.quiz;
 
 import com.qit.server.dao.QuizDao;
 import com.qit.server.dto.QitResponse;

@@ -2,7 +2,7 @@ package tests.service;
 
 import com.qit.server.dto.QitResponse;
 import com.qit.server.model.quiz.Quiz;
-import com.qit.server.service.QuizService;
+import com.qit.server.service.quiz.QuizService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

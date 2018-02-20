@@ -3,7 +3,7 @@ package tests.service;
 import com.qit.server.dto.QitResponse;
 import com.qit.server.model.question.Question;
 import com.qit.server.model.question.QuestionType;
-import com.qit.server.service.QuestionService;
+import com.qit.server.service.question.QuestionService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
