@@ -2,7 +2,7 @@ package tests.service;
 
 import com.qit.server.dto.QitResponse;
 import com.qit.server.model.quiz.Interview;
-import com.qit.server.model.quiz.Questionnnaire;
+import com.qit.server.model.quiz.Questionnaire;
 import com.qit.server.model.quiz.Quiz;
 import com.qit.server.model.quiz.QuizTest;
 import com.qit.server.service.quiz.QuizService;
@@ -50,12 +50,17 @@ public class QuizServiceTest extends AbstractTest {
 	}
 
 	private QitResponse newQuestinnaire() {
-		Quiz quiz = new Questionnnaire();
-		return quizService.save(quiz);
+		Questionnaire questionnaire = new Questionnaire();
+		questionnaire.setAnonymity(Boolean.FALSE);
+		questionnaire.setAnswerLimit(5);
+		questionnaire.setSequence(3);
+		questionnaire.setSummary("Nice");
+		return quizService.save(questionnaire);
 	}
 
 	private QitResponse newInterview() {
-		Quiz quiz = new Interview();
-		return quizService.save(quiz);
+		Interview interview = new Interview();
+		interview.setMemberLimit(5);
+		return quizService.save(interview);
 	}
 }

@@ -9,7 +9,7 @@ import javax.persistence.Table;
 @Data
 @Entity
 @Table(name = "Questionnaires")
-public class Questionnnaire extends Quiz {
+public class Questionnaire extends Quiz {
 
 	@Column(name = "summary")
 	private String summary;
