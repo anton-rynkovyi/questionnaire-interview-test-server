@@ -9,8 +9,9 @@ import java.util.Set;
 
 @Entity
 @Table(name = "quizzes")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Data
-public class Quiz {
+public abstract class Quiz {
 
 	@Id
 	@GeneratedValue
