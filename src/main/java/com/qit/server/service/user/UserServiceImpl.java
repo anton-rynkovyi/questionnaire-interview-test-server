@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User getUser(String login) {
 		if (login == null) return null;
-		return userDao.getOne(null);// TODO: to implement find by login
+		return userDao.getOne(login);
 	}
 
 	@Override
