@@ -43,6 +43,19 @@ public class QuestionServiceTest extends AbstractTest {
 		question = questionService.getQuestion(qitResponse.getId());
 		qitResponse = questionService.deleteQuestion(question);
 		Assert.assertTrue(qitResponse.isSuccessfully());
+		qitResponse = questionService.deleteQuestion(null);
+		Assert.assertFalse(qitResponse.isSuccessfully());
+	}
+
+	@Test
+	public void deleteQuestionById() {
+		Question question = newQuestion();
+		QitResponse qitResponse = questionService.saveQuestion(question);
+		Assert.assertTrue(qitResponse.isSuccessfully());
+		qitResponse = questionService.deleteQuestionById(qitResponse.getId());
+		Assert.assertTrue(qitResponse.isSuccessfully());
+		qitResponse = questionService.deleteQuestionById(null);
+		Assert.assertFalse(qitResponse.isSuccessfully());
 	}
 
 	private Question newQuestion() {

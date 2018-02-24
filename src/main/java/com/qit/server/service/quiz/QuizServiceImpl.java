@@ -51,4 +51,17 @@ public class QuizServiceImpl implements QuizService {
 
 		return qitResponse;
 	}
+
+	@Override
+	public QitResponse deleteById(Long id) {
+		QitResponse qitResponse = new QitResponse();
+		if (id != null) {
+			quizDao.delete(id);
+			qitResponse.successed();
+		} else {
+			qitResponse.failed();
+		}
+
+		return qitResponse;
+	}
 }

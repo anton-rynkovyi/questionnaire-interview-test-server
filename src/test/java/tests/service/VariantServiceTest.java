@@ -38,6 +38,11 @@ public class VariantServiceTest extends AbstractTest {
 		Assert.assertFalse(qitResponse.isSuccessfully());
 	}
 
+	@Test
+	public void deleteVariantById() {
+		//TODO: to implement
+	}
+
 	private QitResponse newVariant() {
 		Variant variant = new Variant();
 		return variantService.save(variant);

@@ -10,11 +10,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import tests.AbstractTest;
 
 import java.util.Date;
+import java.util.List;
 
 public class UserServiceTest extends AbstractTest {
 
 	@Autowired
 	private UserService userService;
+
+	@Test
+	public void getAllUsers() {
+		User user = newUser();
+		userService.save(user);
+		List<User> users = userService.getAllUsers();
+		Assert.assertNotNull(users);
+		Assert.assertFalse(users.isEmpty());
+	}
+
+	@Test
+	public void getUser() {
+		User user = newUser();
+		QitResponse qitResponse = userService.save(user);
+		user = userService.getUser(qitResponse.getPrimaryKey());
+		Assert.assertNotNull(user);
+	}
 
 	@Test
 	public void createUser() {
@@ -27,6 +45,13 @@ public class UserServiceTest extends AbstractTest {
 
 	@Test
 	public void deleteUser() {
+		User user = newUser();
+		QitResponse qitResponse = userService.delete(user);
+		Assert.assertTrue(qitResponse.isSuccessfully());
+	}
+
+	@Test
+	public void deleteUserById() {
 		User user = newUser();
 		QitResponse qitResponse = userService.delete(user);
 		Assert.assertTrue(qitResponse.isSuccessfully());

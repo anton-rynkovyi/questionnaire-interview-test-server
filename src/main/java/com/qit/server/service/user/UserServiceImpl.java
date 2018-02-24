@@ -16,12 +16,13 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<User> getAllUsers() {
-		return null;
+		return userDao.findAll();
 	}
 
 	@Override
-	public User getUser(Long id) {
-		return null;
+	public User getUser(String login) {
+		if (login == null) return null;
+		return userDao.getOne(null);// TODO: to implement find by login
 	}
 
 	@Override
@@ -42,6 +43,21 @@ public class UserServiceImpl implements UserService {
 	public QitResponse delete(User user) {
 		QitResponse qitResponse = new QitResponse();
 		if (user != null) {
+			user.setEnabled(false);
+			userDao.save(user);
+			qitResponse.successed();
+		} else {
+			qitResponse.failed();
+		}
+
+		return qitResponse;
+	}
+
+	@Override
+	public QitResponse deleteByLogin(String login) {
+		QitResponse qitResponse = new QitResponse();
+		if (login != null) {
+			User user = getUser(login);
 			user.setEnabled(false);
 			userDao.save(user);
 			qitResponse.successed();

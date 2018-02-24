@@ -44,6 +44,11 @@ public class QuizServiceTest extends AbstractTest {
 		Assert.assertTrue(qitResponse.isSuccessfully());
 	}
 
+	@Test
+	public void deleteQuizById() {
+		//TODO: to implement
+	}
+
 	private QitResponse newTest() {
 		Quiz quiz = new QuizTest();
 		return quizService.save(quiz);

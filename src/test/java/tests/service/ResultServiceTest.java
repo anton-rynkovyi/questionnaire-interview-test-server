@@ -43,6 +43,11 @@ public class ResultServiceTest extends AbstractTest {
 		Assert.assertFalse(qitResponse.isSuccessfully());
 	}
 
+	@Test
+	public void deleteResultById() {
+		//TODO: to implement
+	}
+
 	private QitResponse newResult() {
 		Result result = new Result();
 		return resultService.save(result);

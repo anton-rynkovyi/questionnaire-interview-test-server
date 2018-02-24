@@ -15,7 +15,7 @@ public class QuestionServiceImpl implements QuestionService {
 	private QuestionDao questionDao;
 
 	@Override
-	public List<Question> getAllQuestion() {
+	public List<Question> getAllQuestions() {
 		return null;
 	}
 
@@ -39,10 +39,25 @@ public class QuestionServiceImpl implements QuestionService {
 
 	@Override
 	public QitResponse deleteQuestion(Question question) {
-		questionDao.delete(question);
 		QitResponse qitResponse = new QitResponse();
-		qitResponse.successed();
-		qitResponse.setId(question.getId());
+		if (question != null) {
+			questionDao.delete(question);
+			qitResponse.successed();
+		} else {
+			qitResponse.failed();
+		}
+		return qitResponse;
+	}
+
+	@Override
+	public QitResponse deleteQuestionById(Long id) {
+		QitResponse qitResponse = new QitResponse();
+		if (id != null) {
+			questionDao.delete(id);
+			qitResponse.successed();
+		} else {
+			qitResponse.failed();
+		}
 		return qitResponse;
 	}
 }

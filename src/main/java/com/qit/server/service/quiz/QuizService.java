@@ -10,4 +10,5 @@ public interface QuizService {
 	Quiz getQuiz(Long id);
 	QitResponse save(Quiz quiz);
 	QitResponse delete(Quiz quiz);
+	QitResponse deleteById(Long id);
 }

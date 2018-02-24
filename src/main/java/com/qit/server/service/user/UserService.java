@@ -7,7 +7,8 @@ import java.util.List;
 
 public interface UserService {
 	List<User> getAllUsers();
-	User getUser(Long id);
+	User getUser(String login);
 	QitResponse save(User user);
 	QitResponse delete(User user);
+	QitResponse deleteByLogin(String login);
 }
