@@ -14,6 +14,11 @@ public class AnswerServiceTest extends AbstractTest {
 	private AnswerService answerService;
 
 	@Test
+	public void getAllAnswers() {
+		answerService.getAllAnswers();
+	}
+
+	@Test
 	public void getAnswer() {
 		QitResponse qitResponse = newAnswer();
 		Assert.assertTrue(qitResponse.isSuccessfully());
@@ -35,6 +40,16 @@ public class AnswerServiceTest extends AbstractTest {
 	public void deleteAnswer() {
 		QitResponse qitResponse = newAnswer();
 		qitResponse = answerService.delete(answerService.getAnswer(qitResponse.getId()));
+		Assert.assertNotNull(qitResponse);
+		Assert.assertTrue(qitResponse.isSuccessfully());
+		qitResponse = answerService.delete(null);
+		Assert.assertFalse(qitResponse.isSuccessfully());
+	}
+
+	@Test
+	public void deleteAnswerById() {
+		QitResponse qitResponse = newAnswer();
+		qitResponse = answerService.deleteById(qitResponse.getId());
 		Assert.assertNotNull(qitResponse);
 		Assert.assertTrue(qitResponse.isSuccessfully());
 		qitResponse = answerService.delete(null);
