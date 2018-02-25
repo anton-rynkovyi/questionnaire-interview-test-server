@@ -45,7 +45,7 @@ public class User {
 	@Column(name = "gender")
 	private Gender gender;
 
-	/*Deleted to work without cycling*/
+	/**Deleted to work without cycling*/
 	/*@OneToMany(mappedBy = "author")
 	private Set<Quiz> quizzes;*/
 
