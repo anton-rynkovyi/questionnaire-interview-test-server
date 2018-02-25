@@ -60,6 +60,7 @@ public class UserServiceImpl implements UserService {
 			User user = getUser(login);
 			user.setEnabled(false);
 			userDao.save(user);
+			qitResponse.setPrimaryKey(user.getLogin());
 			qitResponse.successed();
 		} else {
 			qitResponse.failed();
