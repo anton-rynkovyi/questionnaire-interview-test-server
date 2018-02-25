@@ -14,14 +14,14 @@ import java.util.Set;
 public class User {
 
 	@Id
-	@Column(name = "login")
+	@Column(name = "login", unique = true, nullable = false, length = 50)
 	private String login;
 
-	@Column(name = "password")
+	@Column(name = "password", nullable = false)
 	private String password;
 
-	@Column(name = "enabled")
-	private boolean isEnabled;
+	@Column(name = "enabled", columnDefinition = "BOOLEAN DEFAULT TRUE")
+	private boolean isEnabled = true;
 
 	@Column(name = "first_name")
 	private String firstName;
@@ -45,8 +45,9 @@ public class User {
 	@Column(name = "gender")
 	private Gender gender;
 
-	@OneToMany(mappedBy = "author")
-	private Set<Quiz> quizzes;
+	/*Deleted to work without cycling*/
+	/*@OneToMany(mappedBy = "author")
+	private Set<Quiz> quizzes;*/
 
 	@OneToMany(mappedBy = "author")
 	private Set<Result> results;

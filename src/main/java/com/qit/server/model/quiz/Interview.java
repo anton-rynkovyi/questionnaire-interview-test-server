@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Data
 @Entity
-@Table(name = "Interviews")
+@Table(name = "interviews")
 public class Interview extends Quiz {
 
 	@Column(name = "member_limit")

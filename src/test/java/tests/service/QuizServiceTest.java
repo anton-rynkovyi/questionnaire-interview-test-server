@@ -6,6 +6,7 @@ import com.qit.server.model.quiz.Questionnaire;
 import com.qit.server.model.quiz.Quiz;
 import com.qit.server.model.quiz.QuizTest;
 import com.qit.server.service.quiz.QuizService;
+import com.qit.server.service.quiz.impl.QuizServiceImpl;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ import tests.AbstractTest;
 public class QuizServiceTest extends AbstractTest {
 
 	@Autowired
-	private QuizService quizService;
+	private QuizServiceImpl quizService;
 
 	@Test
 	public void createQuiz() {
@@ -29,17 +30,17 @@ public class QuizServiceTest extends AbstractTest {
 	@Test
 	public void deleteQuiz() {
 		QitResponse qitResponse = newTest();
-		Quiz quiz = quizService.getQuiz(qitResponse.getId());
+		Quiz quiz = quizService.getOne(qitResponse.getId());
 		qitResponse = quizService.delete(quiz);
 		Assert.assertTrue(qitResponse.isSuccessfully());
 
 		qitResponse = newQuestinnaire();
-		quiz = quizService.getQuiz(qitResponse.getId());
+		quiz = quizService.getOne(qitResponse.getId());
 		qitResponse = quizService.delete(quiz);
 		Assert.assertTrue(qitResponse.isSuccessfully());
 
 		qitResponse = newInterview();
-		quiz = quizService.getQuiz(qitResponse.getId());
+		quiz = quizService.getOne(qitResponse.getId());
 		qitResponse = quizService.delete(quiz);
 		Assert.assertTrue(qitResponse.isSuccessfully());
 	}
@@ -58,7 +59,6 @@ public class QuizServiceTest extends AbstractTest {
 		Questionnaire questionnaire = new Questionnaire();
 		questionnaire.setAnonymity(Boolean.FALSE);
 		questionnaire.setAnswerLimit(5);
-		questionnaire.setSequence(3);
 		questionnaire.setSummary("Nice");
 		return quizService.save(questionnaire);
 	}

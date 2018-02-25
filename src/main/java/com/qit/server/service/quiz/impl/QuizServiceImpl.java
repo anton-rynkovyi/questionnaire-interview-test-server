@@ -1,26 +1,28 @@
-package com.qit.server.service.quiz;
+package com.qit.server.service.quiz.impl;
 
 import com.qit.server.dao.QuizDao;
 import com.qit.server.dto.QitResponse;
 import com.qit.server.model.quiz.Quiz;
+import com.qit.server.service.quiz.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Deprecated
 @Service
-public class QuizServiceImpl implements QuizService {
+public class QuizServiceImpl implements QuizService<Quiz> {
 
 	@Autowired
 	private QuizDao quizDao;
 
 	@Override
-	public List<Quiz> getAllQuizzes() {
+	public List<Quiz> getAll() {
 		return quizDao.findAll();
 	}
 
 	@Override
-	public Quiz getQuiz(Long id) {
+	public Quiz getOne(Long id) {
 		return quizDao.findOne(id);
 	}
 

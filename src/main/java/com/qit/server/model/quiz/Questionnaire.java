@@ -8,14 +8,8 @@ import javax.persistence.Table;
 
 @Data
 @Entity
-@Table(name = "Questionnaires")
+@Table(name = "questionnaires")
 public class Questionnaire extends Quiz {
-
-	@Column(name = "summary")
-	private String summary;
-
-	@Column(name = "sequence")
-	private Integer sequence;
 
 	@Column(name = "anonymity")
 	private Boolean anonymity;

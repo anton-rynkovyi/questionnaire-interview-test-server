@@ -18,9 +18,9 @@ public class QuizControllerTest extends AbstractTest {
 	private QuizController quizController;
 
 	@Test
-	public void getAllQuizzes() {
+	public void getAllQuestionnaires() {
 		ResponseEntity<QitResponse> responseEntity = newQuizTest();
-		Assert.assertNotNull(quizController.getQuizzes());
+		Assert.assertNotNull(quizController.getQuestionnaires());
 	}
 
 	@Test
@@ -28,13 +28,13 @@ public class QuizControllerTest extends AbstractTest {
 		ResponseEntity<QitResponse> responseEntity = newQuizTest();
 		Assert.assertNotNull(quizController.getQuizById(responseEntity.getBody().getId()));
 		responseEntity = newInterview();
-		Assert.assertNotNull(quizController.getQuizById(responseEntity.getBody().getId()));
+		Assert.assertNotNull(quizController.getInterviewById(responseEntity.getBody().getId()));
 		responseEntity = newQuestionnaire();
-		Assert.assertNotNull(quizController.getQuizById(responseEntity.getBody().getId()));
+		Assert.assertNotNull(quizController.getQuestionnaireById(responseEntity.getBody().getId()));
 	}
 
 	@Test
-	public void saveQuiz() {
+	public void saveQuestionnaire() {
 		Assert.assertTrue(newQuizTest().getBody().isSuccessfully());
 		Assert.assertTrue(newQuestionnaire().getBody().isSuccessfully());
 		Assert.assertTrue(newInterview().getBody().isSuccessfully());
@@ -46,25 +46,25 @@ public class QuizControllerTest extends AbstractTest {
 		responseEntity = quizController.deleteQuiz(responseEntity.getBody().getId(), null);
 		Assert.assertTrue(responseEntity.getBody().isSuccessfully());
 		responseEntity = newInterview();
-		responseEntity = quizController.deleteQuiz(responseEntity.getBody().getId(), null);
+		responseEntity = quizController.deleteInterview(responseEntity.getBody().getId(), null);
 		Assert.assertTrue(responseEntity.getBody().isSuccessfully());
 		responseEntity = newQuestionnaire();
-		responseEntity = quizController.deleteQuiz(responseEntity.getBody().getId(), null);
+		responseEntity = quizController.deleteQuestionnaire(responseEntity.getBody().getId(), null);
 		Assert.assertTrue(responseEntity.getBody().isSuccessfully());
 	}
 
 	private ResponseEntity<QitResponse> newQuizTest() {
 		Quiz quiz = new QuizTest();
-		return quizController.saveQuiz(quiz,null);
+		return quizController.saveQuiz(quiz,null); //todo make tests later
 	}
 
 	private ResponseEntity<QitResponse> newInterview() {
-		Quiz quiz = new Interview();
-		return quizController.saveQuiz(quiz,null);
+		Interview interview = new Interview();
+		return quizController.saveInterview(interview,null);
 	}
 
 	private ResponseEntity<QitResponse> newQuestionnaire() {
-		Quiz quiz = new Questionnaire();
-		return quizController.saveQuiz(quiz, null);
+		Questionnaire questionnaire = new Questionnaire();
+		return quizController.saveQuestionnaire(questionnaire, null);
 	}
 }

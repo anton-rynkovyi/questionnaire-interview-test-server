@@ -7,6 +7,6 @@ import javax.persistence.Table;
 
 @Data
 @Entity
-@Table(name = "Tests")
+@Table(name = "tests")
 public class QuizTest extends Quiz {
 }

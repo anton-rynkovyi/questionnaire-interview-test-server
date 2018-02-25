@@ -17,6 +17,12 @@ public abstract class Quiz {
 	@GeneratedValue
 	private Long id;
 
+	@Column(name = "summary")
+	private String summary;
+
+	@Column(name = "description")
+	private String description;
+
 	@ManyToOne
 	@JoinColumn(name = "author_id")
 	private User author;
