@@ -45,7 +45,14 @@ public class ResultServiceTest extends AbstractTest {
 
 	@Test
 	public void deleteResultById() {
-		//TODO: to implement
+		QitResponse qitResponse = newResult();
+		Assert.assertNotNull(qitResponse);
+		Assert.assertNotNull(qitResponse.isSuccessfully());
+		qitResponse = resultService.deleteById(qitResponse.getId());
+		Assert.assertTrue(qitResponse.isSuccessfully());
+		qitResponse = resultService.deleteById(null);
+		Assert.assertNotNull(qitResponse);
+		Assert.assertFalse(qitResponse.isSuccessfully());
 	}
 
 	private QitResponse newResult() {

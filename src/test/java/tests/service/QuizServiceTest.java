@@ -5,7 +5,6 @@ import com.qit.server.model.quiz.Interview;
 import com.qit.server.model.quiz.Questionnaire;
 import com.qit.server.model.quiz.Quiz;
 import com.qit.server.model.quiz.QuizTest;
-import com.qit.server.service.quiz.QuizService;
 import com.qit.server.service.quiz.impl.QuizServiceImpl;
 import org.junit.Assert;
 import org.junit.Test;
@@ -47,7 +46,17 @@ public class QuizServiceTest extends AbstractTest {
 
 	@Test
 	public void deleteQuizById() {
-		//TODO: to implement
+		QitResponse qitResponse = newTest();
+		qitResponse = quizService.deleteById(qitResponse.getId());
+		Assert.assertTrue(qitResponse.isSuccessfully());
+
+		qitResponse = newQuestinnaire();
+		qitResponse = quizService.deleteById(qitResponse.getId());
+		Assert.assertTrue(qitResponse.isSuccessfully());
+
+		qitResponse = newInterview();
+		qitResponse = quizService.deleteById(qitResponse.getId());
+		Assert.assertTrue(qitResponse.isSuccessfully());
 	}
 
 	private QitResponse newTest() {
