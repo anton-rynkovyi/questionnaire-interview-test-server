@@ -6,3 +6,6 @@ jdk:
 
 install:
  - travis_wait
+
+before_script:
+  - psql -c "CREATE USER qit_admin WITH PASSWORD 'qit_admin';" -U postgres
