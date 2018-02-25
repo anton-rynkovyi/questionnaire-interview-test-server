@@ -14,7 +14,8 @@ import java.util.Set;
 public abstract class Quiz {
 
 	@Id
-	@GeneratedValue
+	@SequenceGenerator(name = "quizzes_seq", sequenceName = "quizzes_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "quizzes_seq")
 	private Long id;
 
 	@Column(name = "summary")

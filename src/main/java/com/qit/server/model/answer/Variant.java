@@ -11,7 +11,8 @@ import javax.persistence.*;
 public class Variant {
 
 	@Id
-	@GeneratedValue
+	@SequenceGenerator(name = "answers_variants_seq", sequenceName = "answers_variants_seq",  allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "answers_variants_seq")
 	private Long id;
 
 	@ManyToOne

@@ -12,7 +12,8 @@ import java.util.Set;
 public class Answer {
 
 	@Id
-	@GeneratedValue
+	@SequenceGenerator(name = "answers_seq", sequenceName = "answers_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "answers_seq")
 	private Long id;
 
 	@ManyToOne
