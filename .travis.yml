@@ -8,4 +8,5 @@ install:
  - travis_wait
 
 before_script:
+  - psql -c "CREATE DATABASE qit_db;" -U postgres
   - psql -c "CREATE USER qit_admin WITH PASSWORD 'qit_admin';" -U postgres
