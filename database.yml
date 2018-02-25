@@ -1,0 +1,7 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: qit_db
+  username: qit_admin
+  password: qit_admin
+  template: template0 # Required for UTF8 encoding
