@@ -28,7 +28,7 @@ public abstract class Quiz {
 	private String password;
 
 	@ManyToOne
-	@JoinColumn(name = "author_id")
+	@JoinColumn(name = "author_username")
 	private User author;
 
 	@OneToMany(mappedBy = "quiz")

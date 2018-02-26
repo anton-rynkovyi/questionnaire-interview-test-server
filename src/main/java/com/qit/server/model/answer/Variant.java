@@ -20,4 +20,7 @@ public class Variant {
 	@ManyToOne
 	@JoinColumn(name = "question_id")
 	private Question question;
+
+	@Column(name = "text")
+	private String text;
 }

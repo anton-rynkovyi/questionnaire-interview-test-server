@@ -20,7 +20,7 @@ public class Result {
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "author_id")
+	@JoinColumn(name = "member_username")
 	private User author;
 
 	@ManyToOne

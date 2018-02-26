@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Table(name = "interviews")
 public class Interview extends Quiz {
 
-	@Column(name = "member_limit")
+	@Column(name = "members_limit")
 	private Integer memberLimit;
 
 }

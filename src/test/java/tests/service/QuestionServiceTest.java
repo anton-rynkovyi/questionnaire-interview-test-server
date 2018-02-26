@@ -61,7 +61,7 @@ public class QuestionServiceTest extends AbstractTest {
 	private Question newQuestion() {
 		Question question = new Question();
 		question.setNecessary(true);
-		question.setQuestionType(QuestionType.ONLY_ONE);
+		question.setQuestionType(QuestionType.RADIO);
 
 		return question;
 	}

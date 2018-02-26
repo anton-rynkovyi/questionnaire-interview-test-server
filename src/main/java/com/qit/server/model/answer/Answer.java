@@ -1,6 +1,7 @@
 package com.qit.server.model.answer;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.qit.server.model.question.Question;
 import com.qit.server.model.quiz.Result;
 import lombok.Data;
 
@@ -22,9 +23,13 @@ public class Answer {
 	@JoinColumn(name = "result_id")
 	private Result result;
 
+	@ManyToOne
+	@JoinColumn(name = "question_id")
+	private Question question;
+
 	@ManyToMany
-	@JoinTable(name = "answer_variant",
-			joinColumns = @JoinColumn(name = "variant_id"),
-			inverseJoinColumns = @JoinColumn(name = "answer_id"))
+	@JoinTable(name = "answers_variants",
+			joinColumns = @JoinColumn(name = "answer_id"),
+			inverseJoinColumns = @JoinColumn(name = "variant_id"))
 	private Set<Variant> variants;
 }
