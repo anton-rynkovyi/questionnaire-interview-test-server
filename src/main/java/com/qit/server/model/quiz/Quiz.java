@@ -24,6 +24,9 @@ public abstract class Quiz {
 	@Column(name = "description")
 	private String description;
 
+	@Column(name = "password")
+	private String password;
+
 	@ManyToOne
 	@JoinColumn(name = "author_id")
 	private User author;
