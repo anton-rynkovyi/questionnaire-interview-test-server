@@ -1,5 +1,6 @@
 package com.qit.server.model.quiz;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.qit.server.model.answer.Answer;
 import com.qit.server.model.user.User;
 import lombok.Data;
@@ -10,6 +11,7 @@ import java.util.Set;
 @Entity
 @Table(name = "results")
 @Data
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Result {
 
 	@Id

@@ -1,5 +1,6 @@
 package com.qit.server.model.answer;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.qit.server.model.question.Question;
 import lombok.Data;
 
@@ -8,6 +9,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "variants")
 @Data
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Variant {
 
 	@Id

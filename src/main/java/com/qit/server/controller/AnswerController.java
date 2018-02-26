@@ -24,8 +24,9 @@ public class AnswerController {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public Answer getAnswerById(@PathVariable("id") Long id) {
-		return answerService.getAnswer(id);
+	public ResponseEntity<Answer> getAnswerById(@PathVariable("id") Long id) {
+		Answer answer = answerService.getAnswer(id);
+		return new ResponseEntity<>(answer, HttpStatus.OK);
 	}
 
 	@RequestMapping(method = RequestMethod.POST)

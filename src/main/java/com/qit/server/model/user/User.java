@@ -1,5 +1,7 @@
 package com.qit.server.model.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.qit.server.model.quiz.Quiz;
 import com.qit.server.model.quiz.Result;
 import lombok.Data;
@@ -11,6 +13,7 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 @Data
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User {
 
 	@Id
@@ -46,9 +49,9 @@ public class User {
 	private Gender gender;
 
 
-	/**Deleted to work without cycling*/
-	/*@OneToMany(mappedBy = "author")
-	private Set<Quiz> quizzes;*/
+	@JsonIgnore
+	@OneToMany(mappedBy = "author")
+	private Set<Quiz> quizzes;
 
 	@OneToMany(mappedBy = "author")
 	private Set<Result> results;

@@ -28,10 +28,10 @@ public class AnswerControllerTest extends AbstractTest {
 	@Test
 	public void getAnswer() {
 		ResponseEntity<QitResponse> responseEntity = newAnswer();
-		Answer answer = answerController.getAnswerById(responseEntity.getBody().getId());
-		Assert.assertNotNull(answer);
-		answer = answerController.getAnswerById(null);
-		Assert.assertNull(answer);
+		ResponseEntity<Answer> answerResponseEntity = answerController.getAnswerById(responseEntity.getBody().getId());
+		Assert.assertNotNull(answerResponseEntity.getBody());
+		answerResponseEntity = answerController.getAnswerById(null);
+		Assert.assertNull(answerResponseEntity.getBody());
 	}
 
 	@Test
