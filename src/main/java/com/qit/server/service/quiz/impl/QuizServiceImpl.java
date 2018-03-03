@@ -2,7 +2,7 @@ package com.qit.server.service.quiz.impl;
 
 import com.qit.server.dao.QuizDao;
 import com.qit.server.dto.QitResponse;
-import com.qit.server.model.quiz.Quiz;
+import com.qit.server.models.quiz.Quiz;
 import com.qit.server.service.quiz.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

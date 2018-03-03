@@ -1,4 +1,4 @@
-package com.qit.server.model.user;
+package com.qit.server.models.user;
 
 public enum Gender {
 	MALE,

@@ -1,9 +1,9 @@
 package com.qit.server.controller;
 
 import com.qit.server.dto.QitResponse;
-import com.qit.server.model.quiz.Interview;
-import com.qit.server.model.quiz.Questionnaire;
-import com.qit.server.model.quiz.Quiz;
+import com.qit.server.models.quiz.Interview;
+import com.qit.server.models.quiz.Questionnaire;
+import com.qit.server.models.quiz.Quiz;
 import com.qit.server.service.quiz.QuizService;
 import com.qit.server.service.quiz.impl.QuizServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

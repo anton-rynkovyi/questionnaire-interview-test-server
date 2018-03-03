@@ -2,7 +2,7 @@ package tests.controllers;
 
 import com.qit.server.controller.VariantController;
 import com.qit.server.dto.QitResponse;
-import com.qit.server.model.answer.Variant;
+import com.qit.server.models.answer.Variant;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

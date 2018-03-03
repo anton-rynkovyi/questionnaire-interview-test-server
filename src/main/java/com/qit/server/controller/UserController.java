@@ -1,7 +1,7 @@
 package com.qit.server.controller;
 
 import com.qit.server.dto.QitResponse;
-import com.qit.server.model.user.User;
+import com.qit.server.models.user.User;
 import com.qit.server.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/user")
+@RequestMapping(value = "/api/users")
 public class UserController {
 
 	@Autowired

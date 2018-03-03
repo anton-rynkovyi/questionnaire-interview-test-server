@@ -2,7 +2,7 @@ package com.qit.server.service.result;
 
 import com.qit.server.dao.ResultDao;
 import com.qit.server.dto.QitResponse;
-import com.qit.server.model.quiz.Result;
+import com.qit.server.models.quiz.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

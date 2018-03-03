@@ -1,7 +1,7 @@
 package com.qit.server.controller;
 
 import com.qit.server.dto.QitResponse;
-import com.qit.server.model.answer.Answer;
+import com.qit.server.models.answer.Answer;
 import com.qit.server.service.answer.AnswerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/answer")
+@RequestMapping(value = "a/pi/answers")
 public class AnswerController {
 
 	@Autowired

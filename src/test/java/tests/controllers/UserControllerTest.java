@@ -2,7 +2,7 @@ package tests.controllers;
 
 import com.qit.server.controller.UserController;
 import com.qit.server.dto.QitResponse;
-import com.qit.server.model.user.User;
+import com.qit.server.models.user.User;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

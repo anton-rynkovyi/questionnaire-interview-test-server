@@ -1,7 +1,7 @@
 package com.qit.server.service.question;
 
 import com.qit.server.dto.QitResponse;
-import com.qit.server.model.question.Question;
+import com.qit.server.models.question.Question;
 
 import java.util.List;
 

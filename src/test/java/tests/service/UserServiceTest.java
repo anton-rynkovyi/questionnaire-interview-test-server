@@ -1,8 +1,8 @@
 package tests.service;
 
 import com.qit.server.dto.QitResponse;
-import com.qit.server.model.user.Gender;
-import com.qit.server.model.user.User;
+import com.qit.server.models.user.Gender;
+import com.qit.server.models.user.User;
 import com.qit.server.service.user.UserService;
 import org.junit.Assert;
 import org.junit.Test;

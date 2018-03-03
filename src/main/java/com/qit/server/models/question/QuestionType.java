@@ -1,4 +1,4 @@
-package com.qit.server.model.question;
+package com.qit.server.models.question;
 
 public enum QuestionType {
 	CHECKBOX,

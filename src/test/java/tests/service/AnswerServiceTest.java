@@ -1,7 +1,7 @@
 package tests.service;
 
 import com.qit.server.dto.QitResponse;
-import com.qit.server.model.answer.Answer;
+import com.qit.server.models.answer.Answer;
 import com.qit.server.service.answer.AnswerService;
 import org.junit.Assert;
 import org.junit.Test;

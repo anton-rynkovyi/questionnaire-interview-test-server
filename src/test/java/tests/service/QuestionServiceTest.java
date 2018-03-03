@@ -1,8 +1,8 @@
 package tests.service;
 
 import com.qit.server.dto.QitResponse;
-import com.qit.server.model.question.Question;
-import com.qit.server.model.question.QuestionType;
+import com.qit.server.models.question.Question;
+import com.qit.server.models.question.QuestionType;
 import com.qit.server.service.question.QuestionService;
 import org.junit.Assert;
 import org.junit.Test;
@@ -60,7 +60,7 @@ public class QuestionServiceTest extends AbstractTest {
 
 	private Question newQuestion() {
 		Question question = new Question();
-		question.setNecessary(true);
+		question.setIsNecessary(true);
 		question.setQuestionType(QuestionType.RADIO);
 
 		return question;

@@ -1,8 +1,9 @@
-package com.qit.server.model.quiz;
+package com.qit.server.models.quiz;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.qit.server.model.answer.Answer;
-import com.qit.server.model.user.User;
+import com.qit.server.models.answer.Answer;
+import com.qit.server.models.user.User;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -27,6 +28,7 @@ public class Result {
 	@JoinColumn(name = "quiz_id")
 	private Quiz quiz;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "result")
 	private Set<Answer> answers;
 

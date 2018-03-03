@@ -1,4 +1,4 @@
-package com.qit.server.model.quiz;
+package com.qit.server.models.quiz;
 
 import lombok.Data;
 

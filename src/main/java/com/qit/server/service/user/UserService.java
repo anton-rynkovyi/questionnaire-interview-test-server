@@ -1,7 +1,7 @@
 package com.qit.server.service.user;
 
 import com.qit.server.dto.QitResponse;
-import com.qit.server.model.user.User;
+import com.qit.server.models.user.User;
 
 import java.util.List;
 

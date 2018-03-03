@@ -1,7 +1,7 @@
 package com.qit.server.service.variant;
 
 import com.qit.server.dto.QitResponse;
-import com.qit.server.model.answer.Variant;
+import com.qit.server.models.answer.Variant;
 
 import java.util.List;
 

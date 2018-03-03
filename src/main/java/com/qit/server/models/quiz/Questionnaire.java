@@ -1,4 +1,4 @@
-package com.qit.server.model.quiz;
+package com.qit.server.models.quiz;
 
 import lombok.Data;
 
@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class Questionnaire extends Quiz {
 
 	@Column(name = "anonymity")
-	private Boolean anonymity;
+	private boolean anonymity;
 
 	@Column(name = "answer_limit")
 	private Integer answerLimit;

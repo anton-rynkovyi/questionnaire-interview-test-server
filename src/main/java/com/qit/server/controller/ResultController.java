@@ -1,7 +1,7 @@
 package com.qit.server.controller;
 
 import com.qit.server.dto.QitResponse;
-import com.qit.server.model.quiz.Result;
+import com.qit.server.models.quiz.Result;
 import com.qit.server.service.result.ResultService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/result")
+@RequestMapping(value = "/api/results")
 public class ResultController {
 
 	@Autowired

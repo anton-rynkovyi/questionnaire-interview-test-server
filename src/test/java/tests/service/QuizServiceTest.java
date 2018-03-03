@@ -1,10 +1,10 @@
 package tests.service;
 
 import com.qit.server.dto.QitResponse;
-import com.qit.server.model.quiz.Interview;
-import com.qit.server.model.quiz.Questionnaire;
-import com.qit.server.model.quiz.Quiz;
-import com.qit.server.model.quiz.QuizTest;
+import com.qit.server.models.quiz.Interview;
+import com.qit.server.models.quiz.Questionnaire;
+import com.qit.server.models.quiz.Quiz;
+import com.qit.server.models.quiz.QuizTest;
 import com.qit.server.service.quiz.impl.QuizServiceImpl;
 import org.junit.Assert;
 import org.junit.Test;

@@ -1,7 +1,7 @@
 package com.qit.server.service.result;
 
 import com.qit.server.dto.QitResponse;
-import com.qit.server.model.quiz.Result;
+import com.qit.server.models.quiz.Result;
 
 import java.util.List;
 

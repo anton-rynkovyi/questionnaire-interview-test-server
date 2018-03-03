@@ -1,8 +1,9 @@
-package com.qit.server.model.answer;
+package com.qit.server.models.answer;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.qit.server.model.question.Question;
-import com.qit.server.model.quiz.Result;
+import com.qit.server.models.question.Question;
+import com.qit.server.models.quiz.Result;
 import lombok.Data;
 
 import javax.persistence.*;

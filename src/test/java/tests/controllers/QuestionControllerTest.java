@@ -2,8 +2,8 @@ package tests.controllers;
 
 import com.qit.server.controller.QuestionController;
 import com.qit.server.dto.QitResponse;
-import com.qit.server.model.question.Question;
-import com.qit.server.model.question.QuestionType;
+import com.qit.server.models.question.Question;
+import com.qit.server.models.question.QuestionType;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +46,7 @@ public class QuestionControllerTest extends AbstractTest {
 	private ResponseEntity<QitResponse> newQuestion() {
 		Question question = new Question();
 		question.setQuestionType(QuestionType.CHECKBOX);
-		question.setNecessary(true);
+		question.setIsNecessary(true);
 		question.setText("test text");
 		return questionController.saveQuestion(question);
 	}
