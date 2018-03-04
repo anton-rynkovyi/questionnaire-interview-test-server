@@ -2,6 +2,7 @@ package tests.controllers;
 
 import com.qit.server.controller.QuestionController;
 import com.qit.server.dto.QitResponse;
+import com.qit.server.dto.QuestionDto;
 import com.qit.server.models.question.Question;
 import com.qit.server.models.question.QuestionType;
 import org.junit.Assert;
@@ -48,7 +49,9 @@ public class QuestionControllerTest extends AbstractTest {
 		question.setQuestionType(QuestionType.CHECKBOX);
 		question.setIsNecessary(true);
 		question.setText("test text");
-		return questionController.saveQuestion(question);
+
+		QuestionDto questionDto = new QuestionDto();
+		return questionController.saveQuestion(questionDto);
 	}
 
 }
