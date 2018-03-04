@@ -23,4 +23,5 @@ public class Variant {
 
 	@Column(name = "text")
 	private String text;
+
 }

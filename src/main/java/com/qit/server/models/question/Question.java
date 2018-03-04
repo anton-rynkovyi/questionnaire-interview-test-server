@@ -33,6 +33,7 @@ public class Question {
 	private Quiz quiz;
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "question", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "question", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<Variant> variants;
+
 }

@@ -6,6 +6,7 @@ import com.qit.server.models.quiz.Questionnaire;
 import com.qit.server.models.quiz.Quiz;
 import com.qit.server.service.quiz.QuizService;
 import com.qit.server.service.quiz.impl.QuizServiceImpl;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +27,9 @@ public class QuizController {
 
 	@Autowired
 	private QuizServiceImpl quizService;
+
+	@Autowired
+	private ModelMapper modelMapper;
 
 
 	@RequestMapping(value = "/questionnaires", method = RequestMethod.GET)

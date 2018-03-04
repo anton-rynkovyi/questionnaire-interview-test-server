@@ -2,6 +2,7 @@ package com.qit.server.controller;
 
 import com.qit.server.dto.QitResponse;
 import com.qit.server.dto.QuestionDto;
+import com.qit.server.models.answer.Variant;
 import com.qit.server.models.question.Question;
 import com.qit.server.models.question.QuestionType;
 import com.qit.server.models.quiz.Quiz;
@@ -25,6 +26,7 @@ public class QuestionController {
 	@Autowired
 	private QuizService<Quiz> quizService;
 
+
 	@Autowired
 	private ModelMapper modelMapper;
 
@@ -44,13 +46,13 @@ public class QuestionController {
 		question.setId(questionDto.getId());
 		question.setText(questionDto.getText());
 		question.setIsNecessary(questionDto.getIsNecessary());
-		if (QuestionType.CHECKBOX.toString().equals(questionDto.getQuestionType())) {
+		if (QuestionType.CHECKBOX.toString().equals(questionDto.getQuestionType().toString())) {
 			question.setQuestionType(QuestionType.CHECKBOX);
-		} else if (QuestionType.RADIO.toString().equals(questionDto.getQuestionType())) {
+		} else if (QuestionType.RADIO.toString().equals(questionDto.getQuestionType().toString())) {
 			question.setQuestionType(QuestionType.RADIO);
 		}
+
 		question.setQuiz(quizService.getOne(questionDto.getQuizId()));
-		question.setVariants(questionDto.getVariants());
 
 		return new ResponseEntity<>(questionService.saveQuestion(question), HttpStatus.OK);
 	}
@@ -59,5 +61,4 @@ public class QuestionController {
 	public ResponseEntity<QitResponse> deleteQuestion(@PathVariable("id") Long id) {
 		return new ResponseEntity<>(questionService.deleteQuestionById(id), HttpStatus.OK);
 	}
-
 }

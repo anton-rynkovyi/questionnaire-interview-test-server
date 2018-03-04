@@ -1,7 +1,9 @@
 package com.qit.server.controller;
 
 import com.qit.server.dto.QitResponse;
+import com.qit.server.dto.VariantDto;
 import com.qit.server.models.answer.Variant;
+import com.qit.server.models.question.Question;
 import com.qit.server.service.variant.VariantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,7 +30,13 @@ public class VariantController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<QitResponse> saveVariant(@RequestBody Variant variant) {
+	public ResponseEntity<QitResponse> saveVariant(@RequestBody VariantDto variantDto) {
+		Variant variant = new Variant();
+		variant.setId(variantDto.getId());
+		variant.setText(variantDto.getText());
+		Question question = new Question();
+		question.setId(variantDto.getQuestionId());
+		variant.setQuestion(question);
 		return new ResponseEntity<>(variantService.save(variant), HttpStatus.OK);
 	}
 

@@ -1,16 +1,19 @@
 package com.qit.server.dto;
 
 import com.qit.server.models.answer.Variant;
+import com.qit.server.models.question.QuestionType;
 import lombok.Data;
 
 import java.util.Set;
 
 @Data
 public class QuestionDto {
+
 	private Long id;
 	private Boolean isNecessary;
 	private String text;
-	private String questionType;
+	private QuestionType questionType;
 	private Long quizId;
-	private Set<Variant> variants;
+	private Set<VariantDto> variants;
+
 }

@@ -2,6 +2,7 @@ package tests.controllers;
 
 import com.qit.server.controller.VariantController;
 import com.qit.server.dto.QitResponse;
+import com.qit.server.dto.VariantDto;
 import com.qit.server.models.answer.Variant;
 import org.junit.Assert;
 import org.junit.Test;
@@ -44,7 +45,7 @@ public class VariantControllerTest extends AbstractTest {
 	}
 
 	private ResponseEntity<QitResponse> newVariant() {
-		return variantController.saveVariant(new Variant());
+		return variantController.saveVariant(new VariantDto());
 	}
 
 }

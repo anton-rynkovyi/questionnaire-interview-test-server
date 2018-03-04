@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class Questionnaire extends Quiz {
 
 	@Column(name = "anonymity")
-	private boolean anonymity;
+	private Boolean anonymity;
 
 	@Column(name = "answer_limit")
 	private Integer answerLimit;
