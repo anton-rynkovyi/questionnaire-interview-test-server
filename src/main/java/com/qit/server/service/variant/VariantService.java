@@ -11,4 +11,5 @@ public interface VariantService {
 	QitResponse save(Variant variant);
 	QitResponse delete(Variant variant);
 	QitResponse deleteById(Long id);
+	List<Variant> getVariantsByQuestionId(Long questionId);
 }

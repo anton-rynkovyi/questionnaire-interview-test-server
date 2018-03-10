@@ -25,6 +25,11 @@ public class QuestionServiceImpl implements QuestionService {
 	}
 
 	@Override
+	public List<Question> getQuestionsByQuizId(Long quizId) {
+		return questionDao.findQuestionsByQuizId(quizId);
+	}
+
+	@Override
 	public QitResponse saveQuestion(Question question) {
 		QitResponse qitResponse = new QitResponse();
 		if (question == null) {

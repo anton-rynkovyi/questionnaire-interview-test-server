@@ -11,4 +11,5 @@ public interface QuizService<T extends Quiz> {
 	QitResponse save(T quiz);
 	QitResponse delete(T quiz);
 	QitResponse deleteById(Long id);
+
 }

@@ -25,12 +25,12 @@ public class QuestionControllerTest extends AbstractTest {
 		Assert.assertNotNull(questions);
 	}
 
-	@Test
+/*	@Test
 	public void getQuestion() {
 		ResponseEntity<QitResponse> responseEntity = newQuestion();
 		Question question = questionController.getQuestion(responseEntity.getBody().getId());
 		Assert.assertNotNull(question);
-	}
+	}*/
 
 	@Test
 	public void saveQuestion() {

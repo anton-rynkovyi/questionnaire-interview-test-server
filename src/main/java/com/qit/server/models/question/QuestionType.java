@@ -2,7 +2,8 @@ package com.qit.server.models.question;
 
 public enum QuestionType {
 	CHECKBOX("CHECKBOX"),
-	RADIO("RADIO");
+	RADIO("RADIO"),
+	DETAILED("DETAILED");
 
 	private String questionType;
 

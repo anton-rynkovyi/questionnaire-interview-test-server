@@ -61,4 +61,9 @@ public class VariantServiceImpl implements VariantService {
 		}
 		return qitResponse;
 	}
+
+	@Override
+	public List<Variant> getVariantsByQuestionId(Long questionId) {
+		return variantDao.findVariantsByQuestionId(questionId);
+	}
 }

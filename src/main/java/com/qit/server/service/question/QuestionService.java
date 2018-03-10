@@ -8,6 +8,7 @@ import java.util.List;
 public interface QuestionService {
 	List<Question> getAllQuestions();
 	Question getQuestion(Long id);
+	List<Question> getQuestionsByQuizId(Long id);
 	QitResponse saveQuestion(Question question);
 	QitResponse deleteQuestion(Question question);
 	QitResponse deleteQuestionById(Long id);
