@@ -44,9 +44,9 @@ public class User {
 	@Column(name = "additional_info")
 	private String additionalInfo;
 
-	@Enumerated(value = EnumType.STRING)
+//	@Enumerated(value = EnumType.STRING)
 	@Column(name = "gender")
-	private Gender gender;
+	private String gender;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "author")
@@ -56,4 +56,18 @@ public class User {
 	@OneToMany(mappedBy = "author")
 	private Set<Result> results;
 
+
+	public Gender getGender() {
+		if (Gender.MALE.toString().equals(gender)) {
+			return Gender.MALE;
+		}
+		if (Gender.FEMALE.toString().equals(gender)) {
+			return Gender.FEMALE;
+		}
+		return null;
+	}
+
+	public void setGender(Gender gender) {
+		this.gender = gender.toString();
+	}
 }
